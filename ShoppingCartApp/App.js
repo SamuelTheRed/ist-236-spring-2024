@@ -1,5 +1,8 @@
-/*
-return {
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+  return (
     <>
     <StatusBar style="light" />
     <SafeAreaView style={styles.rootContainer}>
@@ -21,16 +24,18 @@ return {
         </View>
     </SafeAreaView>
     </>
+  );
 }
 
-rootContainer {
+const styles = StyleSheet.create({
+  rootContainer: {
     flex: 1,
     backgroundColor: "#1e085a",
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 40
-},
-titleContainer {
+  },
+  titleContainer: {
     flex: 1,
     marginTop: 40,
     paddingHorizontal: 30,
@@ -38,17 +43,17 @@ titleContainer {
     backgroundColor: "white",
     borderBottomRightRadius: 20,
     borderTopLeftRadius: 20
-},
-title {
+  },
+  title: {
     fontSize: 40,
     color: "#5e08cc"
-},
-buttonCOntainer {
+  },
+  buttonContainer: {
     flex: 1,
     justifyContent: "center",
     backgroundColor: "white"
-},
-subtitleContainer {
+  },
+  subtitleContainer: {
     flex: 1,
     marginTop: 10,
     paddingHorizontal: 30,
@@ -56,19 +61,19 @@ subtitleContainer {
     backgroundColor: "white",
     borderBottomRightRadius: 20,
     borderTopLeftRadius: 20
-},
-subtitle {
+  },
+  subtitle: {
     fontSize: 30,
     color: "#5e08cc"
-},
-listContainer {
+  },
+  listContainer: {
     flex: 5,
     backgroundColor: "#fff"
-},
-text {
+  },
+  text: {
     fontSize: 20,
     color: "#FEE",
     fontStyle: "italic",
     marginBottom: 10
 }
-*/
+});

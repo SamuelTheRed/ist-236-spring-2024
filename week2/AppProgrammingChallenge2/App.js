@@ -1,5 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  Linking,
+} from "react-native";
 
 export default function App() {
   return (
@@ -13,10 +20,31 @@ export default function App() {
           />
         </View>
         <View style={styles.informationContainer}>
-          <Text style={styles.title}>Samuel Shelley</Text>
-          <Text style={styles.text}>sshell18@hgtc.edu</Text>
-          <Text style={styles.text}>(843) 325-0888</Text>
-          <Text style={styles.text}>https://github.com/SamuelTheRed</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Samuel Shelley</Text>
+          </View>
+          <View style={styles.otherContainer}>
+            <Text
+              style={styles.text}
+              onPress={() =>
+                Linking.openURL("mailto:samuelshelley02@gmail.com")
+              }
+            >
+              samuelshelley02@gmail.com
+            </Text>
+            <Text
+              style={styles.text}
+              onPress={() => Linking.openURL("tel:8433250888")}
+            >
+              (843) 325-0888
+            </Text>
+            <Text
+              style={styles.text}
+              onPress={() => Linking.openURL("https://github.com/SamuelTheRed")}
+            >
+              https://github.com/SamuelTheRed
+            </Text>
+          </View>
         </View>
       </SafeAreaView>
     </>
@@ -32,26 +60,35 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: 1,
-    paddingTop: 40,
+    padding: 20,
     width: "100%",
   },
   image: {
     height: 300,
     width: "100%",
     resizeMode: "cover",
-    borderWidth: 3,
+    borderWidth: 10,
     borderColor: "rgb(68, 0, 255)",
   },
   informationContainer: {
-    flex: 10,
+    flex: 2,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+  },
+  titleContainer: {
+    flex: 1,
+    padding: 20,
+    width: "100%",
   },
   title: {
-    fontSize: 40,
+    paddingTop: 20,
+    fontSize: 50,
     color: "#FEE",
     fontWeight: "bold",
-    marginBottom: 10,
+  },
+  otherContainer: {
+    flex: 5,
+    width: "100%",
   },
   text: {
     fontSize: 30,

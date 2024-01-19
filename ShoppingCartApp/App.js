@@ -1,28 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 
 export default function App() {
   return (
     <>
-    <StatusBar style="light" />
-    <SafeAreaView style={styles.rootContainer}>
-
+      <StatusBar style="light" />
+      <SafeAreaView style={styles.rootContainer}>
         <View style={styles.titleContainer}>
-            <Text style={styles.title}>Shopping List</Text>
+          <Text style={styles.title}>Shopping List</Text>
         </View>
 
         <View style={styles.buttonContainer}>
-            <Text style={styles.text}>Add Item Button Goes Here</Text>
+          <Text style={styles.text}>Add Item Button Goes Here</Text>
         </View>
 
         <View style={styles.subtitleContainer}>
-            <Text style={styles.subtitle}>Items to Get</Text>
+          <Text style={styles.subtitle}>Items to Get:</Text>
         </View>
 
         <View style={styles.listContainer}>
-            <Text style={styles.text}>List of Items Goes Here</Text>
+          <Text style={styles.text}>List of Items Goes Here</Text>
         </View>
-    </SafeAreaView>
+      </SafeAreaView>
     </>
   );
 }
@@ -33,20 +32,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#1e085a",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 40
+    paddingTop: 40,
   },
   titleContainer: {
     flex: 1,
-    marginTop: 40,
+    margin: 10,
     paddingHorizontal: 30,
     justifyContent: "center",
     backgroundColor: "white",
     borderBottomRightRadius: 20,
-    borderTopLeftRadius: 20
+    borderTopLeftRadius: 20,
   },
   title: {
     fontSize: 40,
-    color: "#5e08cc"
+    color: "#5e08cc",
   },
   buttonContainer: {
     flex: 1,
@@ -55,25 +54,20 @@ const styles = StyleSheet.create({
   },
   subtitleContainer: {
     flex: 1,
-    marginTop: 10,
+    margin: 10,
     paddingHorizontal: 30,
     justifyContent: "center",
     backgroundColor: "white",
     borderBottomRightRadius: 20,
-    borderTopLeftRadius: 20
+    borderTopLeftRadius: 20,
   },
   subtitle: {
     fontSize: 30,
-    color: "#5e08cc"
+    color: "#5e08cc",
   },
   listContainer: {
-    flex: 5,
-    backgroundColor: "#fff"
-  },
-  text: {
-    fontSize: 20,
-    color: "#FEE",
-    fontStyle: "italic",
-    marginBottom: 10
-}
+    flex: 7,
+    backgroundColor: "#fff",
+    justifyContent: "center"
+  }
 });

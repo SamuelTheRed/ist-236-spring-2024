@@ -1,5 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView, Modal, Image, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Modal,
+  Image,
+  Pressable,
+  useState
+} from "react-native";
 
 export default function App() {
   // Create State Management variables
@@ -21,7 +30,7 @@ export default function App() {
   }
 
   function addItemHandler() {
-    console.log(enteredItemText)
+    console.log(enteredItemText);
     if (shoppingItems === "") {
       setShoppingItems(enteredItemText);
     } else {
@@ -30,7 +39,6 @@ export default function App() {
     setEnteredItemText("");
     endItemHandler();
   }
-
 
   return (
     <>
@@ -47,9 +55,7 @@ export default function App() {
             onPress={startAddItemHandler}
           >
             <View>
-              <Text>
-                Add New Item
-              </Text>
+              <Text>Add New Item</Text>
             </View>
           </Pressable>
           <Button
@@ -84,16 +90,12 @@ export default function App() {
 
               <View style={styles.modalButtonContainer}>
                 <View style={styles.modalButton}>
-                  <Button
-                    title="Add Item"
-                    color=""
-                  />
+                  <Button title="Add Item" color="" />
                 </View>
               </View>
             </View>
           </SafeAreaView>
         </Modal>
-
       </SafeAreaView>
     </>
   );
@@ -122,23 +124,23 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   addButton: {
     backgroundColor: "white",
-    padding: 10
+    padding: 10,
   },
   addButtonText: {
     fontSize: 20,
-    color: ""
+    color: "",
   },
   pressedButton: {
-    opacity: 0.8
+    opacity: 0.8,
   },
   modalButtonContainer: {
     flex: 1,
     justifyContent: "center",
-    marginBottom: 10
+    marginBottom: 10,
   },
   subtitleContainer: {
     flex: 1,
@@ -157,11 +159,11 @@ const styles = StyleSheet.create({
     flex: 7,
     width: "90%",
     backgroundColor: "#fff",
-    alignItems: "center"
+    alignItems: "center",
   },
   listText: {
     fontSize: 20,
-    color: "black"
+    color: "black",
   },
   modalRootContainer: {
     flex: 1,
@@ -176,12 +178,12 @@ const styles = StyleSheet.create({
     alignitems: "center",
     width: 90,
     padding: 16,
-    backgroundColor: "#311"
+    backgroundColor: "#311",
   },
   image: {
     width: 100,
     height: 100,
-    margin: 20
+    margin: 20,
   },
   textInput: {
     borderWidth: 1,
@@ -190,14 +192,14 @@ const styles = StyleSheet.create({
     color: "",
     borderRadius: 6,
     width: "100%",
-    padding: 12
+    padding: 12,
   },
   buttonContainer: {
     flexDirection: "row",
-    marginTop: 10
+    marginTop: 10,
   },
   modalButton: {
     width: "30%",
-    marginHorizontal: 8
-  }
+    marginHorizontal: 8,
+  },
 });

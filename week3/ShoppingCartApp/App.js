@@ -6,9 +6,11 @@ import {
   SafeAreaView,
   Modal,
   Image,
+  Button,
   Pressable,
-  useState
+  TextInput,
 } from "react-native";
+import { useState } from "react";
 
 export default function App() {
   // Create State Management variables
@@ -21,7 +23,7 @@ export default function App() {
     setModalIsVisible(true);
   }
 
-  function endItemHandler() {
+  function endAddItemHandler() {
     setModalIsVisible(false);
   }
 
@@ -37,7 +39,7 @@ export default function App() {
       setShoppingItems(shoppingItems + "\n" + enteredItems);
     }
     setEnteredItemText("");
-    endItemHandler();
+    endAddItemHandler();
   }
 
   return (
@@ -50,19 +52,14 @@ export default function App() {
 
         <View style={styles.buttonContainer}>
           <Pressable
-            android_ripple={{ color: "#fff" }}
+            android_ripple={{ color: "#b180f0" }}
             style={({ pressed }) => pressed && styles.pressedButton}
             onPress={startAddItemHandler}
           >
-            <View>
-              <Text>Add New Item</Text>
+            <View style={styles.addButton}>
+              <Text style={styles.addButtonText}>Add New Item</Text>
             </View>
           </Pressable>
-          <Button
-            title="Add New Item"
-            color="#b180f0"
-            onPress={startAddItemHandler}
-          />
         </View>
 
         <View style={styles.subtitleContainer}>
@@ -90,7 +87,18 @@ export default function App() {
 
               <View style={styles.modalButtonContainer}>
                 <View style={styles.modalButton}>
-                  <Button title="Add Item" color="" />
+                  <Button
+                    title="Add Item"
+                    color="#b180f0"
+                    onPress={addItemHandler}
+                  />
+                </View>
+                <View style={styles.modalButton}>
+                  <Button
+                    title="Cancel"
+                    color="#f1449b"
+                    onPress={endAddItemHandler}
+                  />
                 </View>
               </View>
             </View>
@@ -128,19 +136,17 @@ const styles = StyleSheet.create({
   },
   addButton: {
     backgroundColor: "white",
+    borderWidth: 1,
+    borderRadius: 5,
     padding: 10,
   },
   addButtonText: {
     fontSize: 20,
-    color: "",
+    fontWeight: "bold",
+    color: "#5e08cc",
   },
   pressedButton: {
     opacity: 0.8,
-  },
-  modalButtonContainer: {
-    flex: 1,
-    justifyContent: "center",
-    marginBottom: 10,
   },
   subtitleContainer: {
     flex: 1,
@@ -155,15 +161,15 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "#5e08cc",
   },
+  listText: {
+    fontSize: 20,
+    color: "black",
+  },
   listContainer: {
     flex: 7,
     width: "90%",
     backgroundColor: "#fff",
     alignItems: "center",
-  },
-  listText: {
-    fontSize: 20,
-    color: "black",
   },
   modalRootContainer: {
     flex: 1,
@@ -175,28 +181,28 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
     justifyContent: "center",
-    alignitems: "center",
-    width: 90,
+    alignItems: "center",
+    width: "90%",
     padding: 16,
-    backgroundColor: "#311",
+    backgroundColor: "#311b6b",
   },
   image: {
     width: 100,
     height: 100,
-    margin: 20,
+    margin: 20
   },
   textInput: {
     borderWidth: 1,
-    borderColor: "",
-    backgroundColor: "",
-    color: "",
+    borderColor: "#e4d0ff",
+    backgroundColor: "#e4d0ff",
+    color: "#120438",
     borderRadius: 6,
     width: "100%",
     padding: 12,
   },
-  buttonContainer: {
+  modalButtonContainer: {
     flexDirection: "row",
-    marginTop: 10,
+    marginTop: 16,
   },
   modalButton: {
     width: "30%",

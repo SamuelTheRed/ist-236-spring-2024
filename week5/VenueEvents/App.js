@@ -1,8 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import HomeScreen from './screens/HomeScreen';
 import Colors from './constants/colors';
+import { useFonts } from 'expo-font';
+import EventsScreen from './screens/EventsScreen';
 
 export default function App() {
   // Set up our custom fonts

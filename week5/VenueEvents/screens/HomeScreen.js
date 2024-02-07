@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Title from "../components/Title";
 import NavButton from "../components/NavButton";

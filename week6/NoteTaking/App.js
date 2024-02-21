@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 import NoteScreen from "./screens/NoteScreen";
 import AddNoteScreen from "./screens/AddNoteScreen";
 

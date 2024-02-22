@@ -28,7 +28,9 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.accent500,
         height: 75,
         width: 150,
-        margin: 8
+        margin: 8,
+        borderRadius: 0,
+        backgroundColor: Colors.accent500
     },
     pressedItem: {
         opacity: 0.8
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
         padding: 0,
         fontSize: 22,
         textAlign: "center",
+        fontFamily: "paperNoteBold",
         color: Colors.primary300,
-        fontFamily: "squealer"
     }
 });

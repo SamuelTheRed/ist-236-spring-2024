@@ -5,7 +5,7 @@ import NavButton from "../components/NavButton";
 import Colors from "../constants/colors";
 
 // Add Note screen object with properties
-function AddNoteScreen(props) {
+function NotesView(props) {
   // Set safe area screen boundaries
   const insets = useSafeAreaInsets();
 
@@ -23,48 +23,54 @@ function AddNoteScreen(props) {
         ]}
       >
         <View style={styles.titleContainer}>
-          <Title>{props.title}</Title>
+          <Title style={styles.title}>{props.title}</Title>
         </View>
 
         <View style={styles.textContainer}>
-          <Title>{props.text}</Title>
+          <Text style={styles.text}>{props.text}</Text>
         </View>
 
         <View style={styles.buttonContainer}>
-          <NavButton onPress={props.onNext}>Return to Thoughts</NavButton>
+          <NavButton onPress={props.onClose}>Return to Thoughts</NavButton>
         </View>
       </View>
     </Modal>
   );
 }
 
-const styles = StyleSheet.create({ //1:33:00
+export default NotesView;
+
+const styles = StyleSheet.create({
     screenContainer: {
       flex: 1,
-      width: "90%",
+      width: "100%",
+      backgroundColor: Colors.accent800,
+      alignItems: "center"
     },
     titleContainer: {
       flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      marginVertical: 20
+      justifyContent: "center"
     },
-    imageContainer: {
-      flex: 2,
-      justifyContent: "center",
-      borderWidth: 4,
-      borderRadius: 55,
-      borderColor: Colors.accent500
+    title: {
+      fontSize: 30,
+      textAlign: "center",
+      fontFamily: "paperNoteSketch",
+      color: Colors.primary300
     },
-    image: {
-      resizeMode: "cover",
-      height: "100%",
-      weight: "100%",
-      resizeMode: "stretch",
+    textContainer: {
+      flex: 5,
+      width: "90%",
+      borderWidth: 3,
+      borderColor: Colors.primary500,
+      padding: 10
+    },
+    text: {
+      color: Colors.primary300,
+      fontSize: 20,
+      fontFamily: "paperNote"
     },
     buttonContainer: {
-      flex: 2,
-      justifyContent: "center",
-      alignItems: "center"
+      marginTop: 10,
+      flex: 1
     },
   });

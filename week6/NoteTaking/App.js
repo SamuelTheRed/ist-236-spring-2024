@@ -1,13 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { useFonts } from "expo-font";
 import HomeScreen from "./screens/HomeScreen";
 import NoteScreen from "./screens/NoteScreen";
 import AddNoteScreen from "./screens/AddNoteScreen";
+import Colors from "./constants/colors";
+import { useState } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     noteFont: require("./assets/fonts/Note.ttf"),
-    peperNote: require("./assets/fonts/Papernotes.ttf"),
+    paperNote: require("./assets/fonts/Papernotes.ttf"),
     paperNoteSketch: require("./assets/fonts/Papernotes Sketch.ttf"),
     paperNoteBold: require("./assets/fonts/Papernotes Bold.ttf"),
   });
@@ -42,7 +46,12 @@ export default function App() {
   let screen = <HomeScreen onNext={notesScreenHandler} />;
 
   if (currentScreen === "add") {
-    screen = <AddNoteScreen onAdd={addNotesScreenHandler} onCancel={notesScreenHandler}/>;
+    screen = (
+      <AddNoteScreen
+        onAdd={addNoteHandler}
+        onCancel={notesScreenHandler}
+      />
+    );
   }
 
   if (currentScreen === "notes") {
@@ -60,7 +69,7 @@ export default function App() {
     setCurrentNotes((currentNotes) => {
       return [
         ...currentNotes,
-        { id: currentID, title: enteredNoteText, text: enteredNoteText },
+        { id: currentID, title: enteredNoteTitle, text: enteredNoteText },
       ];
     });
     setCurrentID(currentID + 1);
@@ -69,9 +78,7 @@ export default function App() {
 
   function deleteNoteHandler(id) {
     setCurrentNotes((currentNotes) => {
-      return currentNotes.filter(() => {
-        item.id !== id;
-      });
+      return currentNotes.filter((item) => item.id !== id);
     });
     setCurrentID(currentID + 1);
     notesScreenHandler();

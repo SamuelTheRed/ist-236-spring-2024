@@ -25,7 +25,7 @@ function HomeScreen(props) {
         <Title>Thought Vault</Title>
       </View>
 
-      <View>
+      <View style={styles.imageContainer}>
         <Image
           style={styles.image}
           source={require("../assets/images/note-taking.jpg")}
@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
     borderColor: Colors.accent500
   },
   image: {
-    resizeMode: "cover",
     height: "100%",
-    weight: "100%",
+    width: "100%",
+    borderRadius: 50,
     resizeMode: "stretch",
   },
   buttonContainer: {

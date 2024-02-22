@@ -10,10 +10,10 @@ function NotesItem(props) {
       </View>
       <View style={styles.buttonsContainer}>
         <View style={styles.button}>
-          <Button title="View" onPreess={props.onView} />
+          <Button title="View" onPress={props.onView} />
         </View>
         <View style={styles.button}>
-          <Button title="Delete" onPreess={props.onDelete} />
+          <Button title="Delete" onPress={props.onDelete} />
         </View>
       </View>
     </View>
@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    backgroundColor: Colors.primary300,
+    backgroundColor: Colors.accent500, // Apple
+    // backgroundColor: Colors.primary300, 
+    color: "#FFF", // Apple
     fontFamily: "paperNoteBold",
     padding: 8
   },

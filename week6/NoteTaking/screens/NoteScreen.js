@@ -1,18 +1,28 @@
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text, Image, FlatList } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Title from "../components/Title";
 import NavButton from "../components/NavButton";
 import Colors from "../constants/colors";
 import NotesItem from "../components/NotesItem";
+import NotesView from "../modals/NotesView";
+import { useState } from "react";
 
 // Note screen object with properties
 function NoteScreen(props) {
   // Set safe area screen boundaries
   const insets = useSafeAreaInsets();
 
-  function noteViewHandler(title, text){
-    setModalNoteTitle(title),
-    setModalNoteText(text)
+  const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [modalNoteTitle, setModalNoteTitle] = useState("");
+  const [modalNoteText, setModalNoteText] = useState("");
+
+  function noteViewHandler(title, text) {
+    setModalNoteTitle(title);
+    setModalNoteText(text);
+    setModalIsVisible(true);
+  }
+  function closeNoteViewHandler() {
+    setModalIsVisible(false);
   }
 
   return (
@@ -31,9 +41,9 @@ function NoteScreen(props) {
         <Title>Current Thoughts</Title>
       </View>
 
-      <View style={styles.listContainer}>
+      <View style={styles.itemContainer}>
         <FlatList
-          data={prop.currentNotes}
+          data={props.currentNotes}
           keyExtractor={(item, index) => item.id}
           alwaysBounceVertical={false}
           showsVerticalScrollIndicator={false}
@@ -42,7 +52,11 @@ function NoteScreen(props) {
               <NotesItem
                 id={itemData.item.id}
                 title={itemData.item.title}
-                onView={noteViewHandler}
+                onView={noteViewHandler.bind(
+                  this,
+                  itemData.item.title,
+                  itemData.item.text
+                )}
                 onDelete={props.onDelete.bind(this, itemData.item.id)}
               />
             );
@@ -50,12 +64,19 @@ function NoteScreen(props) {
         />
       </View>
 
-      <View style={styles.buttonContainer}>
-        <View style={styles.button}>
+      <NotesView
+        visible={modalIsVisible}
+        title={modalNoteTitle}
+        text={modalNoteText}
+        onClose={closeNoteViewHandler}
+      />
+
+      <View style={styles.navButtonContainer}>
+        <View style={styles.navButton}>
           <NavButton onPress={props.onAdd}>Add New Note</NavButton>
         </View>
 
-        <View style={styles.button}>
+        <View style={styles.navButton}>
           <NavButton onPress={props.onHome}>Return Home</NavButton>
         </View>
       </View>
@@ -65,7 +86,7 @@ function NoteScreen(props) {
 
 export default NoteScreen;
 
-const styles = StyleSheet.create({ //1:24:00
+const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
     width: "90%",
@@ -76,22 +97,16 @@ const styles = StyleSheet.create({ //1:24:00
     alignItems: "center",
     marginVertical: 20,
   },
-  imageContainer: {
-    flex: 2,
-    justifyContent: "center",
-    borderWidth: 4,
-    borderRadius: 55,
-    borderColor: Colors.accent500,
+  itemContainer: {
+    flex: 6,
   },
-  image: {
-    resizeMode: "cover",
-    height: "100%",
-    weight: "100%",
-    resizeMode: "stretch",
-  },
-  buttonContainer: {
+  navButtonContainer: {
     flex: 2,
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+  },
+  navButton: {
+    marginHorizontal: 10,
   },
 });

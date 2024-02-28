@@ -12,7 +12,7 @@ export default function App() {
   const [fontsLoaded, fontError] = useFonts({
     secondary: require("./assets/fonts/titulo.ttf"),
     primary: require("./assets/fonts/Ronysiswadi9Med.ttf"),
-    primaryVarient: require("./assets/fonts/Ronysiswadi9Light.ttf"),
+    primaryVariant: require("./assets/fonts/Ronysiswadi9Light.ttf"),
     primaryBold: require("./assets/fonts/Ronysiswadi9Bold.ttf"),
   });
 
@@ -70,20 +70,24 @@ export default function App() {
   const [newsletter, setNewsletter] = useState(false);
   const [rentalMembership, setRentalMembership] = useState(false);
 
+  // Waits to load screen until fonts loaded
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded || fontError) {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded, fontError]);
 
+  // Setting Services Handler
   function setServiceHandler(id) {
     setServices((prevServices) =>
+    // Tests service option
       prevServices.map((item) =>
         item.id === id ? { ...item, value: !item.value } : item
       )
     );
   }
 
+  // Handlers for newsletter and membership toggles
   function setNewsletterHandler() {
     setNewsletter((previous) => !previous);
   }
@@ -91,15 +95,18 @@ export default function App() {
     setRentalMembership((previous) => !previous);
   }
 
+  // Handler to return to home screen
   function homeScreenHandler() {
+    // Nulls Price and Time ID when returning to home
     setCurrentPrice(0);
-
     setRepairTimeId(0);
 
+    // For each checkbox, set value to null when returning to home
     for (let i = 0; i < services.length; i++) {
       services[i].value = false;
     }
 
+    // Tests if the handler needs to return to off then toggles if so
     if (newsletter) {
       setNewsletterHandler();
     }
@@ -107,31 +114,40 @@ export default function App() {
       setRentalMembershipHandler();
     }
 
+    // Sets screen to home
     setCurrentScreen("home");
   }
 
+  // Screen handler to enter order review screen
   function orderReviewHandler() {
+    // Nulls price before equation is used
     let price = 0;
+    // For each checkbox add the price to total price
     for (let i = 0; i < services.length; i++) {
       if (services[i].value) {
         price = price + services[i].price;
       }
     }
 
+    // Price added if newsletter is selected
     if (newsletter) {
-      price = price * 2;
+      price = price + 0;
     }
 
+    // Price added if membership is selected
     if (rentalMembership) {
       price = price + 100;
     }
 
+    // price increased by time price for selected radio button
     price += repairTimeRadioButtons[repairTimeId].price;
 
+    // Sets state variable of price and goes to review screen
     setCurrentPrice(price);
     setCurrentScreen("review");
   }
 
+  // Sets screen to homescreen and passes necessary parameters of variables and functions
   let screen = (
     <HomeScreen
       repairTimeId={repairTimeId}
@@ -147,6 +163,7 @@ export default function App() {
     />
   );
 
+  // Sets screen to review and passes necessary parameters of variables and functions
   if (currentScreen == "review") {
     screen = (
       <OrderReviewScreen
@@ -160,9 +177,11 @@ export default function App() {
     );
   }
 
+  // Tests if fonts were loaded without error
   if (!fontsLoaded && !fontError) {
     return null;
   } else {
+    // If no error, load screen
     return (
       <>
         <StatusBar style="auto" />
@@ -174,6 +193,7 @@ export default function App() {
   }
 }
 
+// CSS
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,

@@ -5,15 +5,18 @@ import Title from "../components/Title";
 import Colors from "../constants/colors";
 import NavButton from "../components/NavButton";
 
+// Order Review screen object with properties
 function OrderReviewScreen(props) {
   const insets = useSafeAreaInsets();
 
   return (
+    // React component for linear gradient on order review screen
     <LinearGradient
       colors={[Colors.accent300, Colors.accent500, Colors.accent800]}
       style={styles.rootContainer}
     >
       <View
+        // Safe Area Insets
         style={[
           styles.rootContainer,
           {
@@ -24,6 +27,7 @@ function OrderReviewScreen(props) {
           },
         ]}
       >
+        {/* Custom title component */}
         <View style={styles.titleContainer}>
           <Title>Order Summary</Title>
         </View>
@@ -38,6 +42,7 @@ function OrderReviewScreen(props) {
           <Text style={styles.service}>Repair Time:</Text>
           <Text style={styles.subService}>{props.repairTime}</Text>
           <Text style={styles.service}>Services:</Text>
+          {/* Mapped services info component */}
           {props.services.map((item) => {
             if (item.value) {
               return (
@@ -47,6 +52,7 @@ function OrderReviewScreen(props) {
               );
             }
           })}
+          {/* Addon choices */}
           <Text style={styles.service}>Add Ons:</Text>
           <Text style={styles.subService}>
             {props.newsletter ? "Newsletter" : ""}
@@ -56,6 +62,7 @@ function OrderReviewScreen(props) {
           </Text>
         </View>
 
+        {/* Totals */}
         <View style={styles.subTitleContainer}>
           <Text style={styles.subTitle}>
             Subtotal: ${props.price.toFixed(2)}{" "}
@@ -68,7 +75,9 @@ function OrderReviewScreen(props) {
           </Text>
         </View>
 
+        {/* Returns screen to home */}
         <View style={styles.buttonContainer}>
+          {/* Custom Nav Button Component  */}
           <NavButton onPress={props.onNext}>Return Home</NavButton>
         </View>
       </View>
@@ -76,8 +85,10 @@ function OrderReviewScreen(props) {
   );
 }
 
+// Exports as component
 export default OrderReviewScreen;
 
+// CSS
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
@@ -88,7 +99,7 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
     paddingHorizontal: 10,
     borderWidth: 2,
-    borderRadius: 5,
+    borderRadius: 50,
     borderColor: Colors.primary500,
   },
   subTitleContainer: {
@@ -104,6 +115,11 @@ const styles = StyleSheet.create({
   },
   servicesContianer: {
     flex: 3,
+    borderWidth: 2,
+    borderRadius: 50,
+    borderColor: Colors.primary500,
+    paddingTop: 50,
+    paddingHorizontal: 10
   },
   service: {
     fontSize: 20,

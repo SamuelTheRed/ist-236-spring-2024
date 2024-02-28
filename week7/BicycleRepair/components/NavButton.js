@@ -5,12 +5,14 @@ import Colors from "../constants/colors";
 function NavButton(props) {
 
     return (
+        // Pressable component for customizable button
         <Pressable
             onPress={props.onPress}
             style={({ pressed }) => pressed && styles.pressedItem}
         >
             <View style={styles.buttonContainer}>
                 <View style={styles.textContainer}>
+                    {/* Pulls from properties to place button info */}
                     <Text  style={styles.text}>{props.children}</Text>
                 </View>
             </View>
@@ -18,8 +20,10 @@ function NavButton(props) {
     );
 }
 
+// Exports as component
 export default NavButton;
 
+// CSS
 const styles = StyleSheet.create({
     buttonContainer: {
         justifyContent: "center",
@@ -36,6 +40,7 @@ const styles = StyleSheet.create({
     text: {
         padding: 8,
         fontSize: 25,
+        fontFamily: "primaryBold",
         textAlign: "center",
         color: Colors.accent500
     }

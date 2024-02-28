@@ -1,5 +1,10 @@
 import { StatusBar } from "expo-status-bar";
+import { useMemo, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import HomeScreen from "./screens/HomeScreen";
+import Colors from "./constants/colors";
+import OrderReviewScreen from "./screens/OrderReviewScreen";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState("");
@@ -155,18 +160,134 @@ export default function App() {
   const [toasted, setToasted] = useState(false);
   const [mealCombo, setMealCombo] = useState(false);
 
+  function setMeatHandler(id) {
+    setMeats((prevMeats) =>
+      prevMeats.map((item) =>
+        item.id === id ? { ...item, value: !item.value } : item
+      )
+    );
+  }
+
+  function setSauceHandler(id) {
+    setSauces((prevSauces) =>
+      prevSauces.map((item) =>
+        item.id === id ? { ...item, value: !item.value } : item
+      )
+    );
+  }
+
+  function setVegetablesHandler(id) {
+    setVegetables((prevVegetables) =>
+      prevVegetables.map((item) =>
+        item.id === id ? { ...item, value: !item.value } : item
+      )
+    );
+  }
+
+  function setDoubleMeatHandler() {
+    setDoubleMeat((previous) => !previous);
+  }
+  function setDoubleCheeseHandler() {
+    setDoubleCheese((previous) => !previous);
+  }
+  function setToastedHandler() {
+    setToasted((previous) => !previous);
+  }
+  function setMealComboHandler() {
+    setMealCombo((previous) => !previous);
+  }
+
+  function homeScreenHandler(){
+    setCurrentPrice(0);
+    setCurrentScreen("home");
+  }
+
+  function orderReviewHandler() {
+    let price = 0;
+    for (let i = 0; i < meats.length; i++) {
+      if (meats[i].value) {
+        price = price + meats[i].price;
+      }
+    }
+
+    if (doubleMeat) {
+      price = price * 2;
+    }
+
+    if (doubleCheese) {
+      price = price + 1.25;
+    }
+
+    if (mealCombo) {
+      price = price + 3.75;
+    }
+
+    price += sizeRadioButtons[sizeId].price;
+
+    setCurrentPrice(price);
+    setCurrentScreen("review");
+  }
+
+  let screen = (
+    <HomeScreen
+      sizeId={sizeId}
+      breadId={breadId}
+      cheeseId={cheeseId}
+      meats={meats}
+      sauces={sauces}
+      vegetables={vegetables}
+      doubleMeat={doubleMeat}
+      doubleCheese={doubleCheese}
+      toasted={toasted}
+      mealCombo={mealCombo}
+      sizeRadioButtons={sizeRadioButtons}
+      breadRadioButtons={breadRadioButtons}
+      cheeseRadioButtons={cheeseRadioButtons}
+      onSetSizeId={setSizeId}
+      onSetBreadId={setBreadId}
+      onSetCheeseId={setCheeseId}
+      onSetMeats={setMeatHandler}
+      onSetSauces={setSauceHandler}
+      onSetVegetables={setVegetablesHandler}
+      onSetDoubleMeat={setDoubleMeatHandler}
+      onSetDoubleCheese={setDoubleCheeseHandler}
+      onSetToasted={setToastedHandler}
+      onSetMealCombo={setMealComboHandler}
+      onNext={orderReviewHandler}
+    />
+  );
+
+  if (currentScreen == "review") {
+    screen = (
+      <OrderReviewScreen
+        size={sizeRadioButtons[sizeId].value}
+        bread={breadRadioButtons[breadId].value}
+        cheese={breadRadioButtons[cheeseId].value}
+        meats={meats}
+        sauces={sauces}
+        vegetables={vegetables}
+        doubleMeat={doubleMeat}
+        doubleCheese={doubleCheese}
+        toasted={toasted}
+        mealCombo={mealCombo}
+        price={currentPrice}
+        onNext={homeScreenHandler}
+      />
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <>
       <StatusBar style="auto" />
-    </View>
+      <SafeAreaProvider style={styles.rootContainer}>{screen}</SafeAreaProvider>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  rootContainer: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.accent500,
     alignItems: "center",
     justifyContent: "center",
   },

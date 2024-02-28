@@ -9,6 +9,7 @@ import {
   Modal,
   Button,
   useWindowDimensions,
+  Dimensions,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Title from "../components/Title";
@@ -299,6 +300,8 @@ function HomeScreen(props) {
 // Exports as component
 export default HomeScreen;
 
+const windowWidth = Dimensions.get("screen").width;
+
 // CSS
 const styles = StyleSheet.create({
   rootContainer: {
@@ -374,6 +377,6 @@ const styles = StyleSheet.create({
     fontFamily: "hotel",
     textShadowColor: "#000",
     textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 2
-  }
+    textShadowRadius: 2,
+  },
 });

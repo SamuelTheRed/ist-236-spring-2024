@@ -16,7 +16,7 @@ export default Title;
 const styles = StyleSheet.create({
     title: {
         fontSize: 50,
-        fontFamily: "secondary",
+        fontFamily: "primary",
         textAlign: "center",
         color: Colors.primary500
     }

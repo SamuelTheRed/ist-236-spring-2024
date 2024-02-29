@@ -374,7 +374,7 @@ const styles = StyleSheet.create({
   results: {
     textAlign: "center",
     color: Colors.primary500,
-    fontFamily: "hotel",
+    fontFamily: "primary",
     textShadowColor: "#000",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 2,

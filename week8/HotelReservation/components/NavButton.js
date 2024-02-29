@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     text: {
         padding: 8,
         fontSize: 25,
-        fontFamily: "primaryBold",
+        fontFamily: "primary",
         textAlign: "center",
         color: Colors.accent500
     }

@@ -4,6 +4,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import Colors from "./constants/colors";
+import HomeScreen from "./screens/HomeScreen";
+import { useCallback } from "react";
 
 export default function App() {
   // Import fonts and store as variables

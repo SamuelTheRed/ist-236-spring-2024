@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/campground_splash.jpg",
+      "image": "./assets/images/campground_splash.jpg",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },

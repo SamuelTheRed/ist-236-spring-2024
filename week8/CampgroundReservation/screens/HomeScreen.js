@@ -24,6 +24,7 @@ function HomeScreen(props) {
   // Set safe area screen boundaries
   const insets = useSafeAreaInsets();
 
+  /*---- Check In Functionality Variables ----*/
   const [checkIn, setCheckIn] = useState(new Date());
   const [showCheckIn, setShowCheckIn] = useState(false);
 
@@ -33,6 +34,7 @@ function HomeScreen(props) {
   function hideCheckInPicker() {
     setShowCheckIn(false);
   }
+  // Calls appropriate date function according to OS
   function onChangeCheckIn(event, selectedDate) {
     const currentDate = selectedDate;
     if (Platform.OS === "android") {
@@ -41,6 +43,7 @@ function HomeScreen(props) {
     setCheckIn(currentDate);
   }
 
+  /*---- Check Out Functionality Variables ----*/
   const [checkOut, setCheckOut] = useState(new Date());
   const [showCheckOut, setShowCheckOut] = useState(false);
 
@@ -50,6 +53,7 @@ function HomeScreen(props) {
   function hideCheckOutPicker() {
     setShowCheckOut(false);
   }
+  // Calls appropriate date function according to OS
   function onChangeCheckOut(event, selectedDate) {
     const currentDate = selectedDate;
     if (Platform.OS === "android") {
@@ -58,6 +62,7 @@ function HomeScreen(props) {
     setCheckOut(currentDate);
   }
 
+  /*---- Guest Count Functionality Variables ----*/
   const guestCounts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const [numGuests, setNumGuests] = useState(0);
   const [showNumGuests, setShowNumGuests] = useState(false);
@@ -72,6 +77,7 @@ function HomeScreen(props) {
     setNumGuests(index);
   }
 
+  /*---- Campsite Count Functionality Variables ----*/
   const campsiteCounts = [1, 2, 3, 4, 5];
   const [numCampsites, setNumCampsites] = useState(0);
   const [showNumCampsites, setShowNumCampsites] = useState(false);
@@ -86,6 +92,7 @@ function HomeScreen(props) {
     setNumCampsites(index);
   }
 
+  /*---- Accumulated Results ----*/
   const [results, setResults] = useState("");
 
   function onReserveHandler() {
@@ -96,6 +103,7 @@ function HomeScreen(props) {
     setResults(res);
   }
 
+  /*---- Dynanic Window Control ----*/
   const { width, height } = useWindowDimensions();
 
   const dateLabelFlex = {
@@ -105,8 +113,9 @@ function HomeScreen(props) {
     fontSize: width * 0.05,
   };
 
-  // Loads screen
+  /*---- Screen HTML ----*/
   return (
+    // Image Background allows image wrap on app screen
     <ImageBackground
       source={require("../assets/images/campground.jpg")}
       resizeMode="cover"
@@ -132,26 +141,34 @@ function HomeScreen(props) {
             <Title>Cempbell's Campground</Title>
           </View>
 
+          {/* Date Check In and Check Out Area */}
           <View style={styles.rowContainer}>
             <View style={styles.dateContainer}>
+              {/* Date Check In Label and Pressable */}
               <Text style={[styles.dateLabel, dateLabelFlex]}>Check In:</Text>
+              {/* Calls to open Check In Picker*/}
               <Pressable onPress={showCheckInPicker}>
                 <Text style={[styles.dateText, dateTextFlex]}>
+                  {/* Check In variable */}
                   {checkIn.toDateString()}
                 </Text>
               </Pressable>
             </View>
             <View style={styles.dateContainer}>
               <Text style={[styles.dateLabel, dateLabelFlex]}>Check Out:</Text>
+              {/* Calls to open Check Out Picker*/}
               <Pressable onPress={showCheckOutPicker}>
                 <Text style={[styles.dateText, dateTextFlex]}>
+                  {/* Check Out variable */}
                   {checkOut.toDateString()}
                 </Text>
               </Pressable>
             </View>
           </View>
 
+          {/* Check In Picker (android) or Modal and Picker (apple) */}
           <View>
+            {/* Android In */}
             {showCheckIn && Platform.OS === "android" && (
               <DateTimePicker
                 testID="dateTimePickerCheckInAndroid"
@@ -161,6 +178,7 @@ function HomeScreen(props) {
                 onChange={onChangeCheckIn}
               />
             )}
+            {/* Apple In */}
             {showCheckIn && Platform.OS === "ios" && (
               <Modal
                 animationType="slide"
@@ -176,11 +194,14 @@ function HomeScreen(props) {
                       display="spinner"
                       onChange={onChangeCheckIn}
                     />
+                    {/* Button to close Modal */}
                     <Button title="Confirm" onPress={hideCheckInPicker} />
                   </View>
                 </View>
               </Modal>
             )}
+
+            {/* Check Out Picker (android) or Modal and Picker (apple) */}
             {showCheckOut && Platform.OS === "android" && (
               <DateTimePicker
                 testID="dateTimePickerCheckOutAndroid"
@@ -190,6 +211,7 @@ function HomeScreen(props) {
                 onChange={onChangeCheckOut}
               />
             )}
+            {/* Apple Out */}
             {showCheckOut && Platform.OS === "ios" && (
               <Modal
                 animationType="slide"
@@ -205,6 +227,7 @@ function HomeScreen(props) {
                       display="spinner"
                       onChange={onChangeCheckOut}
                     />
+                    {/* Button to close Modal */}
                     <Button title="Confirm" onPress={hideCheckOutPicker} />
                   </View>
                 </View>
@@ -212,7 +235,9 @@ function HomeScreen(props) {
             )}
           </View>
 
+          {/* Guests number Wheel Picker */}
           <View style={styles.rowContainer}>
+            {/* Title and Number Variable */}
             <Text style={[styles.dateLabel, dateLabelFlex]}>
               Number of Guests:
             </Text>
@@ -224,6 +249,7 @@ function HomeScreen(props) {
               </View>
             </Pressable>
 
+            {/* Modal for Wheel Picker on show */}
             <Modal
               animationType="slide"
               transparent={true}
@@ -235,6 +261,7 @@ function HomeScreen(props) {
                   <Text style={[styles.dateText, dateTextFlex]}>
                     Enter Number of Guests:
                   </Text>
+                  {/* Wheel Picker Component */}
                   <WheelPicker
                     selectedIndex={numGuests}
                     options={guestCounts}
@@ -247,6 +274,7 @@ function HomeScreen(props) {
             </Modal>
           </View>
 
+          {/* Campsites number Picker (android) or Modal and Picker (apple) */}
           <View style={styles.rowContainer}>
             <Text style={[styles.dateLabel, dateLabelFlex]}>
               Number of Campsites:
@@ -259,6 +287,7 @@ function HomeScreen(props) {
               </View>
             </Pressable>
 
+            {/* Modal for Wheel Picker on show */}
             <Modal
               animationType="slide"
               transparent={true}
@@ -270,6 +299,7 @@ function HomeScreen(props) {
                   <Text style={[styles.dateText, dateTextFlex]}>
                     Enter Number of Campsites:
                   </Text>
+                  {/* Wheel Picker Component */}
                   <WheelPicker
                     selectedIndex={numCampsites}
                     options={campsiteCounts}
@@ -288,6 +318,7 @@ function HomeScreen(props) {
             <NavButton onPress={onReserveHandler}>Reserve Now</NavButton>
           </View>
 
+          {/* Returns User's choice's results when called */}
           <View style={styles.resultsContainer}>
             <Text style={[styles.results, dateLabelFlex]}>{results}</Text>
           </View>
@@ -300,6 +331,7 @@ function HomeScreen(props) {
 // Exports as component
 export default HomeScreen;
 
+// Dynamic width component
 const windowWidth = Dimensions.get("screen").width;
 
 // CSS

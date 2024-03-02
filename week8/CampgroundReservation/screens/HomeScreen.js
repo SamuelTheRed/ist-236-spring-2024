@@ -138,7 +138,7 @@ function HomeScreen(props) {
         <ScrollView style={styles.scrollContainer}>
           {/* Custom title component */}
           <View style={styles.titleContainer}>
-            <Title>Cempbell's Campground</Title>
+            <Title>Campbell's Campground</Title>
           </View>
 
           {/* Date Check In and Check Out Area */}

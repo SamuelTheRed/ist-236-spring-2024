@@ -10,7 +10,8 @@ import { useCallback } from "react";
 export default function App() {
   // Import fonts and store as variables
   const [fontsLoaded, fontError] = useFonts({
-    primary: require("./assets/fonts/TheHotelio.ttf"),
+    primary: require("./assets/fonts/HaveIdea.ttf"),
+    primaryBold: require("./assets/fonts/MotleyForcesRegular.ttf"),
   });
 
   // Waits to load screen until fonts loaded

@@ -1,10 +1,11 @@
 const Colors = {
-    accent300: "#cd9d6c",
-    accent500: "#a75c00",
-    primary300o5: "rgba(220, 245, 237, 0.5)",
-    primary300: "#dcf5ee",
-    primary500: "#5be2b9",
-    primary800: "#138b55"
+    accent300: "rgb(135, 206, 235)",
+    accent300o75: "rgba(135, 207, 235, 0.75)",
+    accent500: "rgb(255, 165, 0)",
+    accent800: "rgb(128, 128, 128)",
+    primary300: "rgb(245, 245, 220)",
+    primary500: "rgb(34, 139, 34)",
+    primary800: "rgb(139, 69, 19)",
 };
 
 export default Colors;

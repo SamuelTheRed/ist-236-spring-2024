@@ -1,20 +1,68 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import Colors from "./constants/colors";
+import HomeScreen from "./screens/HomeScreen";
+import CampgroundOverviewScreen from "./screens/CampgroundsOverviewScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useCallback } from "react";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  // Import fonts and store as variables
+  const [fontsLoaded, fontError] = useFonts({
+    primary: require("./assets/fonts/Mountain.ttf"),
+  });
+
+  // Waits to load screen until fonts loaded
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded || fontError) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  // Tests if fonts were loaded without error
+  if (!fontsLoaded && !fontError) {
+    return null;
+  } else {
+    // If no error, load screen
+    return (
+      <>
+        <StatusBar style="light" />
+        <NavigationContainer style={styles.rootContainer}>
+          <Stack.Navigator
+            initialRouteName="HomeScreen"
+            screenOptions={{
+              headerStyle: { backgroundColor: Colors.primary500 },
+              headerTintColor: Colors.primary300,
+              headerTitleStyle: { fontFamily: "primary", fontSize: 40 },
+              contentStyle: { backgroundColor: Colors.primary800 },
+            }}
+          >
+            <Stack.Screen
+              name="HomeScreen"
+              component={HomeScreen}
+              options={{
+                title: "Campground Locations",
+              }}
+            />
+            <Stack.Screen
+              name="Campground Overview Screen"
+              component={CampgroundOverviewScreen}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  rootContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: Colors.accent300,
   },
 });

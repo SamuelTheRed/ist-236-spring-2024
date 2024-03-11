@@ -44,6 +44,10 @@ function CampgroundItem(props) {
 
       <ImageViewModal
         isVisible={modalIsVisible}
+        name={props.name}
+        numSites={props.numSites}
+        foundedYear={props.foundedYear}
+        rating={props.rating}
         imageUrl={props.imageUrl}
         onClose={closeImageHandler}
       />
@@ -99,10 +103,10 @@ const styles = StyleSheet.create({
   innerRowContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   rating: {
     fontSize: 13,
-    fontStyle: "italic"
+    fontStyle: "italic",
   },
 });

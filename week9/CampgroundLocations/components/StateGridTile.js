@@ -14,6 +14,7 @@ function StateGridTile(props) {
         onPress={props.onPress}
       >
         <LinearGradient
+          style={styles.innerContainer}
           colors={[
             props.color,
             props.color,
@@ -22,7 +23,6 @@ function StateGridTile(props) {
             props.color,
             Colors.accent300o75,
           ]}
-          style={styles.innerContainer}
         >
           <Text style={styles.name}>{props.name}</Text>
         </LinearGradient>

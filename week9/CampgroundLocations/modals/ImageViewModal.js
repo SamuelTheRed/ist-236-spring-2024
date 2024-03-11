@@ -1,6 +1,8 @@
-import { Modal, View, Button, Image, StyleSheet } from "react-native";
+import { Modal, View, Button, Image, StyleSheet, Text } from "react-native";
 
 function ImageViewModal(props) {
+  let description = new Campground(props.id, props.stateId, props.name,  props.numSites, props.foundedYear,  props.rating)
+
   return (
     <View style={styles.container}>
       <Modal
@@ -11,6 +13,7 @@ function ImageViewModal(props) {
         <View style={styles.modalContainer}>
           <Image style={styles.image} source={{ uri: props.imageUrl }} />
           <Button title="Return to Campgrounds" onPress={props.onClose} />
+          <Text>{description.toString()}</Text>
         </View>
       </Modal>
     </View>

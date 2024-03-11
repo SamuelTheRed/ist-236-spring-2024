@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import { CAMPGROUNDS, STATES } from "../data/dummy-data";
 import CampgroundItem from "../components/CampgroundItem";
 
-function CampgroundOverviewScreen(props) {
+function CampgroundsOverviewScreen(props) {
   const stateId = props.route.params.stateId;
 
   useLayoutEffect(() => {
@@ -38,11 +38,11 @@ function CampgroundOverviewScreen(props) {
   );
 }
 
-export default CampgroundOverviewScreen;
+export default CampgroundsOverviewScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 16
-    }
-})
+  container: {
+    flex: 1,
+    padding: 16,
+  },
+});

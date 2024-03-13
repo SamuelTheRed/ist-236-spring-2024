@@ -18,8 +18,8 @@ export const DESTINATIONS = [
   new Destination(
     "d1",
     "c1",
-    "Cancún",
-    50,
+    "Niagra Falls",
+    500,
     1985,
     4.5,
     "https://lh3.googleusercontent.com/p/AF1QipMLPG0TdYeAusalV9npDIlqBi5Xs_NCvHlSoY9y=s1360-w1360-h1020"
@@ -27,8 +27,8 @@ export const DESTINATIONS = [
   new Destination(
     "d2",
     "c2",
-    "Arcadia Peace River Destination",
-    30,
+    "Cancún",
+    300,
     1992,
     4.0,
     "https://lh3.googleusercontent.com/p/AF1QipPLHt4CcPQzydK8GZk45cp6F4OCLSrVPbEXj-7e=s1360-w1360-h1020"
@@ -36,8 +36,8 @@ export const DESTINATIONS = [
   new Destination(
     "d3",
     "c3",
-    "Stone Mountain Park Destination",
-    40,
+    "Pyramids",
+    400,
     1978,
     4.2,
     "https://lh3.googleusercontent.com/p/AF1QipN4BCdka5-ZGpE6lhQoGvQyuyvrDYDYRTR9mDZ9=s1360-w1360-h1020"
@@ -46,7 +46,7 @@ export const DESTINATIONS = [
     "d4",
     "c4",
     "Kentucky Horse Park Destination",
-    60,
+    600,
     2001,
     4.7,
     "https://lh3.googleusercontent.com/p/AF1QipOBnp2waOt2jqzmSeGuNr6yw6nDAdfbB_JgTS67=s1360-w1360-h1020"
@@ -55,7 +55,7 @@ export const DESTINATIONS = [
     "d5",
     "c5",
     "Hidden Oaks Destination",
-    25,
+    205,
     1988,
     3.8,
     "https://lh3.googleusercontent.com/p/AF1QipMKwVkZ66ndyrSL8HNshOPfuFIh6PC8-2OhUJaa=s1360-w1360-h1020"
@@ -64,7 +64,7 @@ export const DESTINATIONS = [
     "d6",
     "c6",
     "Little Black Creek Destination",
-    35,
+    350,
     1995,
     4.1,
     "https://lh3.googleusercontent.com/p/AF1QipMLVH4hUp3VXYReamqUsz1Ljonh76eIal4I4yZZ=s1360-w1360-h1020"
@@ -73,7 +73,7 @@ export const DESTINATIONS = [
     "d7",
     "c7",
     "Camp Hatteras RV Resort & Destination",
-    45,
+    405,
     1975,
     4.3,
     "https://lh3.googleusercontent.com/p/AF1QipPl_SZNGGy5UrPSTdFEklkVUMi8YF5d3WtBKgsu=s1360-w1360-h1020"
@@ -82,7 +82,7 @@ export const DESTINATIONS = [
     "d8",
     "c8",
     "Table Rock Country Park",
-    55,
+    550,
     2003,
     4.6,
     "https://lh3.googleusercontent.com/p/AF1QipNiyUDf100wuxMTsu3OEvAbJ188WBsoVp3FBrs=s1360-w1360-h1020"
@@ -91,7 +91,7 @@ export const DESTINATIONS = [
     "d9",
     "c9",
     "Fall Creek Falls Country Park",
-    20,
+    200,
     1982,
     3.9,
     "https://lh3.googleusercontent.com/p/AF1QipOCc6Y1AUqBnXfuL3LVNNso5wCKCjsSQatGwKeq=s1360-w1360-h1020"
@@ -100,7 +100,7 @@ export const DESTINATIONS = [
     "d10",
     "c10",
     "Hungry Mother Country Park",
-    65,
+    650,
     1998,
     4.8,
     "https://lh3.googleusercontent.com/p/AF1QipOOqLSYYgNwxkCHrEgC6AD76Oppmkup2dUtYC_L=s1360-w1360-h1020"
@@ -109,7 +109,7 @@ export const DESTINATIONS = [
     "d11",
     "c1",
     "Lake Guntersville Country Park Destination",
-    40,
+    400,
     1979,
     4.2,
     "https://lh3.googleusercontent.com/p/AF1QipPaKHoIPvRZtgQFXX-v0JS3elhZOQAEcR4EtB3L=s1360-w1360-h1020"
@@ -117,8 +117,8 @@ export const DESTINATIONS = [
   new Destination(
     "d12",
     "c2",
-    "Jetty Park Destination",
-    35,
+    "Mexico City",
+    350,
     1987,
     4.3,
     "https://lh3.googleusercontent.com/p/AF1QipOyfO-CtM3qY-_U2Lh_vXeJT-JDWF1Peo60-Jx6=s1360-w1360-h1020"
@@ -126,8 +126,8 @@ export const DESTINATIONS = [
   new Destination(
     "d13",
     "c3",
-    "Reed Bingham Country Park - Destination",
-    50,
+    "The Nile",
+    500,
     1993,
     4.6,
     "https://lh3.googleusercontent.com/p/AF1QipOVLpVlPFaMs5PqZkTV1Xp4sag6DeD4a1sETsrg=s1360-w1360-h1020"
@@ -136,7 +136,7 @@ export const DESTINATIONS = [
     "d14",
     "c4",
     "Red River Gorge Destination",
-    30,
+    300,
     1981,
     4.0,
     "https://lh3.googleusercontent.com/p/AF1QipN5RttKwNWNLak8YyI-YK3iJkljMbr6dFAQF3Bk=s1360-w1360-h1020"
@@ -145,7 +145,7 @@ export const DESTINATIONS = [
     "d15",
     "c5",
     "Indian Creek Destination",
-    45,
+    405,
     1996,
     4.5,
     "https://lh3.googleusercontent.com/p/AF1QipNy_bOjBzIttqJX-T_sTC6_ezMe4hmE1K1myOwG=s1360-w1360-h1020"
@@ -154,7 +154,7 @@ export const DESTINATIONS = [
     "d16",
     "c6",
     "Piney Grove Destination",
-    55,
+    550,
     2005,
     4.7,
     "https://lh3.googleusercontent.com/p/AF1QipOk70Jg5ROVIeFFkWUcLEI1aWtuQWlz3-sna6dQ=s1360-w1360-h1020"
@@ -163,7 +163,7 @@ export const DESTINATIONS = [
     "d17",
     "c7",
     "Frisco Woods Destinations Inc",
-    25,
+    205,
     1989,
     3.8,
     "https://lh3.googleusercontent.com/p/AF1QipPBKwR-aaXqBBJV7jZhu68yyAgi2a2K-teX3K4K=s1360-w1360-h1020"
@@ -172,7 +172,7 @@ export const DESTINATIONS = [
     "d18",
     "c8",
     "Huntington Beach Country Park",
-    60,
+    600,
     1999,
     4.9,
     "https://lh3.googleusercontent.com/p/AF1QipNPOTpDCJCUExeJKRS3AJIivH9awUxSQOExnuja=s1360-w1360-h1020"
@@ -181,7 +181,7 @@ export const DESTINATIONS = [
     "d19",
     "c9",
     "David Crockett Country Park",
-    30,
+    300,
     1977,
     3.5,
     "https://lh3.googleusercontent.com/p/AF1QipN1UpPQNu6nZ7wgTW9WSfWmoGyKSLffNCJ8PhDg=s1360-w1360-h1020"
@@ -190,7 +190,7 @@ export const DESTINATIONS = [
     "d20",
     "c10",
     "Fairy Stone Country Park",
-    40,
+    400,
     1990,
     4.4,
     "https://lh3.googleusercontent.com/p/AF1QipMMC9ncqLd5gz6rK6uLVv-AM52frv20rwOi-5eM=s1360-w1360-h1020"

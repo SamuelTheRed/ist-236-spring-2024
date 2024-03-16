@@ -7,7 +7,7 @@ function HomeScreen(props) {
   function renderCountryItem(itemData) {
     function pressHandler() {
       props.navigation.navigate("DestinationsOverviewScreen", {
-        countryId: itemData.item.id,
+        countryId: itemData.id,
       });
     }
 

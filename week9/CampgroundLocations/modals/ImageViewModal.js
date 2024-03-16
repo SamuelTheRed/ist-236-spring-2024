@@ -1,4 +1,5 @@
 import { Modal, View, Button, Image, StyleSheet, Text } from "react-native";
+import Campground from "../models/campgrounds";
 
 function ImageViewModal(props) {
   let description = new Campground(props.id, props.stateId, props.name,  props.numSites, props.foundedYear,  props.rating)

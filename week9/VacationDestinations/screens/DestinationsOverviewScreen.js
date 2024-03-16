@@ -17,12 +17,13 @@ function DestinationsOverviewScreen(props) {
 
   function renderDestinationItem(itemData) {
     const destinationItemProps = {
-      name: itemData.item.name,
-      imageUrl: itemData.item.imageUrl,
-      numSites: itemData.item.numSites,
-      foundedYear: itemData.item.foundedYear,
-      rating: itemData.item.rating,
       listIndex: itemData.index,
+      name: itemData.item.name,
+      averageCost: itemData.item.averageCost,
+      yearFounded: itemData.item.yearFounded,
+      rating: itemData.item.rating,
+      description: itemData.item.description,
+      imageUrl: itemData.item.imageUrl,
     };
     return <DestinationItem {...destinationItemProps} />;
   }

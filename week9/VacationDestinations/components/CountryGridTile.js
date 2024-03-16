@@ -36,14 +36,16 @@ export default CountryGridTile;
 const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
-    margin: 16,
-    height: 150,
-    borderRadius: 8,
+    margin: 20,
+    marginBottom: 30,
+    height: 100,
+    borderRadius: 20,
     elevation: 4,
     backgroundColor: "#FFF",
     shadowColor: "#000",
-    shadowOpacity: { width: 0, height: 2 },
-    shadowRadius: 8,
+    shadowOpacity: 0.50,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 20,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
   },
   button: {
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
   innerContainer: {
     flex: 1,
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -60,5 +62,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 30,
     fontFamily: "primary",
+    color: "#FFF",
   },
 });

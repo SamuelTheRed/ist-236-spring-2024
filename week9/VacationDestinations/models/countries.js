@@ -1,4 +1,4 @@
-class State {
+class Country {
   constructor(id, name, color) {
     this.id = id;
     this.name = name;
@@ -6,4 +6,4 @@ class State {
   }
 }
 
-export default State;
+export default Country;

@@ -34,8 +34,8 @@ function CountryItem(props) {
           <View style={styles.infoContainer}>
             <Text style={styles.name}>{props.name}</Text>
             <View style={styles.innerRowContainer}>
-              <Text style={styles.sites}>Sites: {props.numSites}</Text>
-              <Text style={styles.year}>{props.foundedYear}</Text>
+              <Text style={styles.cost}>Average Cost: {props.averageCost}</Text>
+              <Text style={styles.year}>{props.yearFounded}</Text>
             </View>
             <Text style={styles.rating}>Rating: {props.rating} / 5</Text>
           </View>
@@ -45,8 +45,9 @@ function CountryItem(props) {
       <ImageViewModal
         isVisible={modalIsVisible}
         name={props.name}
-        numSites={props.numSites}
-        foundedYear={props.foundedYear}
+        yearFounded={props.yearFounded}
+        description={props.description}
+        averageCost={props.averageCost}
         rating={props.rating}
         imageUrl={props.imageUrl}
         onClose={closeImageHandler}
@@ -91,8 +92,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "left",
     fontSize: 20,
+    fontFamily: "primary"
   },
-  sites: {
+  cost: {
     width: "85%",
     fontSize: 14,
   },

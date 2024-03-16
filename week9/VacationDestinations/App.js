@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   // Import fonts and store as variables
   const [fontsLoaded, fontError] = useFonts({
-    primary: require("./assets/fonts/Mountain.ttf"),
+    primary: require("./assets/fonts/SpButchLiteBold.otf"),
   });
 
   // Waits to load screen until fonts loaded
@@ -39,14 +39,14 @@ export default function App() {
               headerStyle: { backgroundColor: Colors.primary500 },
               headerTintColor: Colors.primary300,
               headerTitleStyle: { fontFamily: "primary", fontSize: 40 },
-              contentStyle: { backgroundColor: Colors.primary800 },
+              contentStyle: { backgroundColor: Colors.primary300 },
             }}
           >
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
               options={{
-                title: "Destination Locations",
+                title: "Vacay Destinations",
               }}
             />
             <Stack.Screen

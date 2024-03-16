@@ -3,15 +3,18 @@ import Destination from "../models/destinations";
 import Colors from "../constants/colors";
 
 function ImageViewModal(props) {
+  // Initialize a Destination Object
   let info = new Destination(props.id, props.countryId, props.name, props.averageCost, props.yearFounded, props.rating, props.description)
-
+  // Return HTML
   return (
     <View style={styles.container}>
+      {/* Modal Screen for Destination */}
       <Modal
         visible={props.isVisible}
         animationType="slide"
         transparent={false}
       >
+        {/* Modal Information */}
         <View style={styles.modalContainer}>
           <Image style={styles.image} source={{ uri: props.imageUrl }} />
           <Text style={styles.info}>{info.toString()}</Text>

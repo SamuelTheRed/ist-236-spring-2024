@@ -3,18 +3,22 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import { DESTINATIONS, COUNTRIES } from "../data/dummy-data";
 import DestinationItem from "../components/DestinationItem";
 
+// Country's Destinations Screen
 function DestinationsOverviewScreen(props) {
   const countryId = props.route.params.countryId;
 
+  // Layout Effect for country
   useLayoutEffect(() => {
     const country = COUNTRIES.find((country) => country.id === countryId);
     props.navigation.setOptions({ title: country ? country.name : null });
   }, [countryId, props.navigation]);
 
+  // Filter through destinations and return where country id is valid
   const displayedDestinations = DESTINATIONS.filter((destinationItem) => {
     return destinationItem.countryId === countryId;
   });
 
+  // Render Item With Props
   function renderDestinationItem(itemData) {
     const destinationItemProps = {
       listIndex: itemData.index,
@@ -28,6 +32,7 @@ function DestinationsOverviewScreen(props) {
     return <DestinationItem {...destinationItemProps} />;
   }
 
+  // Flatlist of Destinations
   return (
     <View style={styles.container}>
       <FlatList

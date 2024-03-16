@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#CCC",
     paddingHorizontal: 5,
     paddingTop: 3,
-    marginBottom: 3,
-    borderRadius: 7,
+    marginBottom: 10,
+    borderRadius: 25,
   },
   button: {
     flex: 1,

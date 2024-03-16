@@ -1,6 +1,7 @@
 import Country from "../models/countries";
 import Destination from "../models/destinations";
 
+// Data List for Countries
 export const COUNTRIES = [
   new Country("c1", "Canada", "#7faa8b"), // 
   new Country("c2", "Mexico", "#b13232"), // 
@@ -14,6 +15,7 @@ export const COUNTRIES = [
   new Country("c10", "Singapore", "#793ab7"), // 
 ];
 
+// Data List for Destinations
 export const DESTINATIONS = [
   new Destination(
     "d1",

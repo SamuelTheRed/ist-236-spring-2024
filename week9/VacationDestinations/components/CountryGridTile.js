@@ -2,8 +2,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Pressable, View, Text, StyleSheet, Platform } from "react-native";
 import Colors from "../constants/colors";
 
+// Country Grid Tile
 function CountryGridTile(props) {
   return (
+    // Grid Item 
     <View style={styles.gridItem}>
       <Pressable
         style={({ pressed }) => [
@@ -13,6 +15,7 @@ function CountryGridTile(props) {
         android_ripple={{ color: Colors.primary300 }}
         onPress={props.onPress}
       >
+        {/* Linear Gradient Design */}
         <LinearGradient
           style={styles.innerContainer}
           colors={[
@@ -20,10 +23,10 @@ function CountryGridTile(props) {
             props.color,
             props.color,
             props.color,
-            props.color,
             Colors.accent300o75,
           ]}
         >
+          {/* Name of Country */}
           <Text style={styles.name}>{props.name}</Text>
         </LinearGradient>
       </Pressable>

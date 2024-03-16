@@ -32,6 +32,7 @@ export default function App() {
     return (
       <>
         <StatusBar style="light" />
+        {/* Native Navigation Elements */}
         <NavigationContainer style={styles.rootContainer}>
           <Stack.Navigator
             initialRouteName="HomeScreen"
@@ -42,6 +43,7 @@ export default function App() {
               contentStyle: { backgroundColor: Colors.primary300 },
             }}
           >
+            {/* Home Screen Stack Navigator */}
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
@@ -49,6 +51,7 @@ export default function App() {
                 title: "Vacay Destinations",
               }}
             />
+            {/* Destination Screen Stack Navigator */}
             <Stack.Screen
               name="DestinationsOverviewScreen"
               component={DestinationsOverviewScreen}

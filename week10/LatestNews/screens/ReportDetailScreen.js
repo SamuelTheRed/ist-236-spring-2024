@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import { useState, useLayoutEffect } from "react";
-import { LISTINGS } from "../data/dummy_data";
+import { REPORTS } from "../data/dummy_data";
 import BookmarkButton from "../components/BookmarkButton";
 import Colors from "../constants/colors";
 
-function ListingDetailScreen(props) {
-  const listingId = props.route.params.listingId;
-  const selectedListing = LISTINGS.find((listing) => listing.id === listingId);
+function ReportDetailScreen(props) {
+  const reportId = props.route.params.reportId;
+  const selectedReport = REPORTS.find((report) => report.id === reportId);
 
   const [pressed, setPressed] = useState(false);
 
@@ -33,36 +33,30 @@ function ListingDetailScreen(props) {
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
-          source={{ uri: selectedListing.imageUrl }}
+          source={{ uri: selectedReport.imageUrl }}
         />
       </View>
 
       <View style={styles.infoContainer}>
-        <Text style={styles.price}>
-          ${selectedListing.price.toLocaleString()}
+        <Text style={styles.headline}>
+          {selectedReport.headline.toLocaleString()}
         </Text>
-        <Text style={styles.space}>
-          {selectedListing.bedrooms} Bed | {selectedListing.bathrooms} Bath |{" "}
-          {selectedListing.squareFeet} SqFt
-        </Text>
-
-        <Text style={styles.address}>
-          {selectedListing.address}, {selectedListing.city}{" "}
-          {selectedListing.state} {selectedListing.zipCode}
+        <Text style={styles.articleInfo}>
+          {selectedReport.date} | by {selectedReport.author}
         </Text>
 
-        <Text style={styles.year}>
-            Built: {selectedListing.yearBuilt}
+        <Text style={styles.agency}>
+          {selectedReport.agency}
         </Text>
 
         <Text style={styles.description}>
-            {selectedListing.description}
+            {selectedReport.description}
         </Text>
       </View>
     </View>
   );
 }
-export default ListingDetailScreen;
+export default ReportDetailScreen;
 
 const styles = StyleSheet.create({
   rootContainer: {
@@ -83,30 +77,22 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
-  price: {
+  headline: {
     color: Colors.primary300,
     fontSize: 35,
-    fontFamily: "playfairBold",
+    fontFamily: "primaryBold",
     paddingBottom: 5,
   },
-  space: {
+  articleInfo: {
     color: Colors.primary300,
     fontSize: 25,
-    fontFamily: "playfair",
+    fontFamily: "primary",
     paddingBottom: 5,
   },
-  address: {
-    color: Colors.primary300,
-    textAlign: "center",
-    width: "100%",
-    fontSize: 15,
-    fontFamily: "playfair",
-    paddingBottom: 5,
-  },
-  year: {
+  agency: {
     color: Colors.primary300,
     fontSize: 25,
-    fontFamily: "playfair",
+    fontFamily: "primary",
     marginBottom: 30,
   },
   description: {
@@ -114,6 +100,6 @@ const styles = StyleSheet.create({
     width: "90%",
     textAlign: "justify",
     fontSize: 15,
-    fontFamily: "playfair",
+    fontFamily: "primary",
   }
 });

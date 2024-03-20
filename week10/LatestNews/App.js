@@ -19,9 +19,12 @@ const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tabs = createBottomTabNavigator();
 
+// Main Navigator Location
 function DrawerNavigator() {
   return (
+    // Over-arching navigator drawer
     <Drawer.Navigator
+      // Styles and options
       initialRouteName="Reports"
       screenOptions={{
         headerStyle: {backgroundColor: Colors.primary500},
@@ -38,9 +41,11 @@ function DrawerNavigator() {
         drawerActiveBackgroundColor: Colors.primary800
       }}
     >
+      {/* Screens within Drawer */}
       <Drawer.Screen
         name="Reports"
         component={TabsNavigator}
+        // Reports options
         options={{
           title: "All News",
           drawerLabel: "News Reports",
@@ -49,9 +54,11 @@ function DrawerNavigator() {
           ),
         }}
       />
+      {/*Bookmarked Reports */}
       <Drawer.Screen 
         name="BookmarkedReports"
         component={BookmarksScreen}
+        // Bookmarks options
         options={{
           title: "Saved Reports",
           drawerLabel: "Saved Reports",
@@ -63,9 +70,10 @@ function DrawerNavigator() {
     </Drawer.Navigator>
   );
 }
-
+// Tabs on bottom of screen
 function TabsNavigator(){
   return (
+    // Main Tabs Navigator
     <Tabs.Navigator
       screenOptions={{
         tabBarShowLabel: true,
@@ -82,7 +90,9 @@ function TabsNavigator(){
         }
       }}
     >
+      {/* Tabs Screens */}
       <Tabs.Screen 
+      // US News
         name="USNewsReports"
         component={USNewsReportsScreen}
         options={{
@@ -94,6 +104,7 @@ function TabsNavigator(){
         }}
       />
       <Tabs.Screen 
+      // World News
         name="WorldNewsReports"
         component={WorldNewsReportsScreen}
         options={{
@@ -105,6 +116,7 @@ function TabsNavigator(){
         }}
       />
       <Tabs.Screen 
+      // Music News
         name="MusicNewsReports"
         component={MusicNewsReportsScreen}
         options={{

@@ -4,21 +4,24 @@ import { REPORTS } from "../data/dummy_data";
 import BookmarkButton from "../components/BookmarkButton";
 import Colors from "../constants/colors";
 
+// Report Detail Screen
 function ReportDetailScreen(props) {
   const reportId = props.route.params.reportId;
   const selectedReport = REPORTS.find((report) => report.id === reportId);
-
+  // Sets whether pressed or not
   const [pressed, setPressed] = useState(false);
 
   function headerButtonPressHandler() {
     setPressed(!pressed);
   }
 
+  // Uses effects on layout for bookmark button
   useLayoutEffect(() => {
     props.navigation.setOptions({
       title: "",
       headerRight: () => {
         return (
+          // HTML Code for button bookmarks
           <BookmarkButton
             pressed={pressed}
             onPress={headerButtonPressHandler}
@@ -27,16 +30,17 @@ function ReportDetailScreen(props) {
       },
     });
   }, [props.navigation, headerButtonPressHandler]);
-
+  // Returns the information for the reports details screens
   return (
     <View style={styles.rootContainer}>
+      {/* Image */}
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
           source={{ uri: selectedReport.imageUrl }}
         />
       </View>
-
+      {/* Info Location */}
       <View style={styles.infoContainer}>
         <Text style={styles.headline}>
           {selectedReport.headline.toLocaleString()}
@@ -44,11 +48,11 @@ function ReportDetailScreen(props) {
         <Text style={styles.articleInfo}>
           {selectedReport.date} | by {selectedReport.author}
         </Text>
-
+        {/* Agency */}
         <Text style={styles.agency}>
           {selectedReport.agency}
         </Text>
-
+        {/* Description */}
         <Text style={styles.description}>
             {selectedReport.description}
         </Text>

@@ -139,7 +139,7 @@ export const REPORTS = [
     "Bob",
     "Al Jazeera",
     "https://images.pexels.com/photos/18638955/pexels-photo-18638955/free-photo-of-person-in-alien-mask-sitting-in-bed-and-reading-book.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "2 bedroom, 2 bathroom condo with views of the golf course. This upscale condo features a gourmet kitchen with granite countertops, stainless steel appliances, and a breakfast bar. The community amenities include a pool, fitness center, and golf course access."
+    "I'm not saying I am one. I just have an incling that they are not so bad. They just drink trash dumpster juice, but that is okay when you think about it. It's like all the good stuff from the neighborhood mixed into one soup. Tom Cruise is a normal person..."
   ),
   new Report(
     19,
@@ -149,7 +149,7 @@ export const REPORTS = [
     "Jack Solomon",
     "The New York Times",
     "https://images.pexels.com/photos/2180820/pexels-photo-2180820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "3 bedroom, 2.5 bathroom townhouse with a fenced backyard. This spacious townhouse features an open-concept living area, hardwood floors, and a kitchen with granite countertops. The backyard includes a patio and garden area."
+    "He's a struggling artist in Greenwood SC. He'll make it someday."
   ),
   new Report(
     20,
@@ -159,6 +159,6 @@ export const REPORTS = [
     "Dr. Phil Caughner",
     "Wallstreet Journal",
     "https://images.pexels.com/photos/874500/pexels-photo-874500.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "4 bedroom, 3.5 bathroom house with a two-car garage. This contemporary home features an open floor plan, high ceilings, and designer finishes throughout. The backyard includes a patio, pool, and outdoor kitchen, perfect for outdoor entertaining."
+    "Pizza causes colon cancer in 43% of individuals of the age 23-72. This covers a large portion of society and it is causing great concern for pizza stock. Dominos is currently low-balling their prices per share."
   ),
 ];

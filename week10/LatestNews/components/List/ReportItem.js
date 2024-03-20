@@ -1,15 +1,17 @@
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+// Creates Report Items
 function ReportItem(props) {
+  // Uses react navigation
   const navigation = useNavigation();
-
+    // When selected, navigates to destination
     function selectedReportHandler() {
       navigation.navigate("ReportDetail", {
         reportId: props.id,
       });
     }
-
+  // Returns Report Item as Pressable
   return (
     <View
       style={[

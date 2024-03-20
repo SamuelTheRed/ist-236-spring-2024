@@ -1,7 +1,9 @@
 import { View, StyleSheet, FlatList } from "react-native";
 import ReportItem from "./ReportItem";
 
+// Creates List of Report Items
 function List(props) {
+  // Renders each Item
   function renderReportItem(itemData) {
     const reportItemProps = {
       id: itemData.item.id,
@@ -15,10 +17,11 @@ function List(props) {
     };
     return <ReportItem {...reportItemProps} />;
   }
-
+  // Creates a List of Report items
   return (
     <View style={styles.container}>
       <FlatList
+        // Sends props as data
         data={props.items}
         keyExtractor={(item) => item.id}
         renderItem={renderReportItem}

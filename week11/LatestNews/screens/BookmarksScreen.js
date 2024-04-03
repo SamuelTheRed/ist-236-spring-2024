@@ -1,24 +1,24 @@
 import { useContext } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { BookmarksContext } from "../store/context/bookmarks-context";
-import { LISTINGS } from "../data/dummy_data";
+import { REPORTS } from "../data/dummy_data";
 import List from "../components/List/List";
 import Colors from "../constants/colors";
 
 
 function BookmarksScreen (){
-    const bookmarkedListingsCtx = useContext(BookmarksContext)
-    const bookmarkedListings = LISTINGS.filter((listingItem) => {
-        return bookmarkedListingsCtx.ids.includes(listingItem.id);
+    const bookmarkedReportsCtx = useContext(BookmarksContext)
+    const bookmarkedReports = REPORTS.filter((reportItem) => {
+        return bookmarkedReportsCtx.ids.includes(reportItem.id);
     })
 
-    if (bookmarkedListings.length === 0 ){
+    if (bookmarkedReports.length === 0 ){
         return <View style={styles.rootContainer}>
-            <Text style={styles.text}>You Have No Saved Listings!</Text>
+            <Text style={styles.text}>You Have No Saved News Reports!</Text>
         </View>
     }
 
-    return <List items={bookmarkedListings}/>
+    return <List items={bookmarkedReports}/>
 }
 
 export default BookmarksScreen;
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 30,
         textAlign:'center', 
-        fontFamily:"primaryItalic",
+        fontFamily:"primaryBoldItalic",
         fontWeight: 'bold',
         color: Colors.primary300,
         opacity: 0.6,

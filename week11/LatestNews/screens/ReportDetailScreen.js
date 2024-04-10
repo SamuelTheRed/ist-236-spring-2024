@@ -1,71 +1,73 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import { useState, useLayoutEffect, useContext } from "react";
-import { LISTINGS } from "../data/dummy_data";
+import { REPORTS } from "../data/dummy_data";
 import BookmarkButton from "../components/BookmarkButton";
 import Colors from "../constants/colors";
 import { BookmarksContext } from "../store/context/bookmarks-context";
 
-function ListingDetailScreen(props) {
-  const bookmarkedListingsCtx = useContext(BookmarksContext);
+// Report Detail Screen
+function ReportDetailScreen(props) {
+  const bookmarkedReportsCtx = useContext(BookmarksContext);
 
-  const listingId = props.route.params.listingId;
-  const selectedListing = LISTINGS.find((listing) => listing.id === listingId);
-
-  const listingIsBookmarked = bookmarkedListingsCtx.ids.includes(listingId);
+  const reportId = props.route.params.reportId;
+  const selectedReport = REPORTS.find((report) => report.id === reportId);
+  // Sets whether pressed or not
+  const reportIsBookmarked = bookmarkedReportsCtx.ids.includes(reportId);
 
   function changeBookmarkStatusHandler() {
-    if (listingIsBookmarked) {
-      bookmarkedListingsCtx.removeFavorite(listingId);
+    if (reportIsBookmarked) {
+      bookmarkedReportsCtx.removeFavorite(reportId);
     } else {
-      bookmarkedListingsCtx.addFavorite(listingId);
+      bookmarkedReportsCtx.addFavorite(reportId);
     }
   }
 
+  // Uses effects on layout for bookmark button
   useLayoutEffect(() => {
     props.navigation.setOptions({
       title: "",
       headerRight: () => {
         return (
+          // HTML Code for button bookmarks
           <BookmarkButton
-            pressed={listingIsBookmarked}
+            pressed={reportIsBookmarked}
             onPress={changeBookmarkStatusHandler}
           />
         );
       },
     });
   }, [props.navigation, changeBookmarkStatusHandler]);
-
+  // Returns the information for the reports details screens
   return (
     <View style={styles.rootContainer}>
+      {/* Image */}
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
-          source={{ uri: selectedListing.imageUrl }}
+          source={{ uri: selectedReport.imageUrl }}
         />
       </View>
-
+      {/* Info Location */}
       <View style={styles.infoContainer}>
-        <Text style={styles.price}>
-          ${selectedListing.price.toLocaleString()}
+        <Text style={styles.headline}>
+          {selectedReport.headline.toLocaleString()}
         </Text>
-        <Text style={styles.space}>
-          {selectedListing.bedrooms} Bed | {selectedListing.bathrooms} Bath |{" "}
-          {selectedListing.squareFeet} SqFt
+        <Text style={styles.articleInfo}>
+          {selectedReport.date} | by {selectedReport.author}
         </Text>
-
-        <Text style={styles.address}>
-          {selectedListing.address}, {selectedListing.city}{" "}
-          {selectedListing.state} {selectedListing.zipCode}
+        {/* Agency */}
+        <Text style={styles.agency}>
+          {selectedReport.agency}
         </Text>
-
-        <Text style={styles.year}>Built: {selectedListing.yearBuilt}</Text>
-
-        <Text style={styles.description}>{selectedListing.description}</Text>
+        {/* Description */}
+        <Text style={styles.description}>
+            {selectedReport.description}
+        </Text>
       </View>
     </View>
   );
 }
-export default ListingDetailScreen;
+export default ReportDetailScreen;
 
 const styles = StyleSheet.create({
   rootContainer: {
@@ -86,27 +88,19 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
-  price: {
+  headline: {
     color: Colors.primary300,
     fontSize: 35,
     fontFamily: "primaryBold",
     paddingBottom: 5,
   },
-  space: {
+  articleInfo: {
     color: Colors.primary300,
     fontSize: 25,
     fontFamily: "primary",
     paddingBottom: 5,
   },
-  address: {
-    color: Colors.primary300,
-    textAlign: "center",
-    width: "100%",
-    fontSize: 15,
-    fontFamily: "primary",
-    paddingBottom: 5,
-  },
-  year: {
+  agency: {
     color: Colors.primary300,
     fontSize: 25,
     fontFamily: "primary",
@@ -118,5 +112,5 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     fontSize: 15,
     fontFamily: "primary",
-  },
+  }
 });

@@ -3,34 +3,35 @@ import { StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
-import Animated from "react-native-reanimated";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BookmarksScreen from "./screens/BookmarksScreen";
-import CondoListingsScreen from "./screens/CondoListingsScreen";
-import HouseListingsScreen from "./screens/HouseListingsScreen";
-import ListingDetailScreen from "./screens/ListingDetailScreen";
-import TownhouseListingsScreen from "./screens/TownhouseListingsScreen";
-import TrailerListingsScreen from "./screens/TrailerListingsScreen";
+import WorldNewsReportsScreen from "./screens/WorldNewsReportsScreen";
+import USNewsReportsScreen from "./screens/USNewsReportsScreen";
+import ReportDetailScreen from "./screens/ReportDetailScreen";
+import MusicNewsReportsScreen from "./screens/MusicNewsReportsScreen";
 import Colors from "./constants/colors";
-import { useCallback } from "react";
 import {
-  Entypo,
-  Feather,
-  MaterialIcons,
+  FontAwesome5,
+  Fontisto,
   MaterialCommunityIcons,
+  FontAwesome,
 } from "@expo/vector-icons";
+import { useCallback } from "react";
 import BookmarksContextProvider from "./store/context/bookmarks-context";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tabs = createBottomTabNavigator();
 
+// Main Navigator Location
 function DrawerNavigator() {
   return (
+    // Over-arching navigator drawer
     <Drawer.Navigator
-      initialRouteName="Listings"
+      // Styles and options
+      initialRouteName="Reports"
       screenOptions={{
         headerStyle: { backgroundColor: Colors.primary500 },
         headerTintColor: "white",
@@ -46,34 +47,39 @@ function DrawerNavigator() {
         drawerActiveBackgroundColor: Colors.primary800,
       }}
     >
+      {/* Screens within Drawer */}
       <Drawer.Screen
-        name="Listings"
+        name="Reports"
         component={TabsNavigator}
+        // Reports options
         options={{
-          title: "All Listings",
-          drawerLabel: "Real Estate Listings",
+          title: "All News",
+          drawerLabel: "News Reports",
           drawerIcon: ({ color, size }) => (
-            <Entypo name="list" size={size} color={color} />
+            <FontAwesome name="th-list" size={size} color={color} />
           ),
         }}
       />
+      {/*Bookmarked Reports */}
       <Drawer.Screen
-        name="BookmarkedListings"
+        name="BookmarkedReports"
         component={BookmarksScreen}
+        // Bookmarks options
         options={{
-          title: "Saved Listings",
-          drawerLabel: "Saved Listings",
+          title: "Saved Reports",
+          drawerLabel: "Saved Reports",
           drawerIcon: ({ size, color }) => (
-            <Entypo name="bookmark" size={size} color={color} />
+            <FontAwesome name="bookmark" size={size} color={color} />
           ),
         }}
       />
     </Drawer.Navigator>
   );
 }
-
+// Tabs on bottom of screen
 function TabsNavigator() {
   return (
+    // Main Tabs Navigator
     <Tabs.Navigator
       screenOptions={{
         tabBarShowLabel: true,
@@ -90,52 +96,45 @@ function TabsNavigator() {
         },
       }}
     >
+      {/* Tabs Screens */}
       <Tabs.Screen
-        name="HouseListings"
-        component={HouseListingsScreen}
+        // US News
+        name="USNewsReports"
+        component={USNewsReportsScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Entypo name="home" size={size} color={color} />
+            <FontAwesome5 name="flag-usa" size={size} color={color} />
           ),
-          tabBarLabel: "Houses",
+          tabBarLabel: "US News",
         }}
       />
       <Tabs.Screen
-        name="CondoListings"
-        component={CondoListingsScreen}
+        // World News
+        name="WorldNewsReports"
+        component={WorldNewsReportsScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="apartment" size={size} color={color} />
+            <Fontisto name="world" size={size} color={color} />
           ),
-          tabBarLabel: "Condos",
+          tabBarLabel: "World News",
         }}
       />
       <Tabs.Screen
-        name="TownhouseListings"
-        component={TownhouseListingsScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="holiday-village" size={size} color={color} />
-          ),
-          tabBarLabel: "Townhouses",
-        }}
-      />
-      <Tabs.Screen
-        name="TrailerListings"
-        component={TrailerListingsScreen}
+        // Music News
+        name="MusicNewsReports"
+        component={MusicNewsReportsScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
-              name="truck-trailer"
+              name="book-music"
               size={size}
               color={color}
             />
           ),
-          tabBarLabel: "Mobile Homes",
+          tabBarLabel: "Music News",
         }}
       />
     </Tabs.Navigator>
@@ -145,10 +144,10 @@ function TabsNavigator() {
 export default function App() {
   // Import fonts and store as variables
   const [fontsLoaded, fontError] = useFonts({
-    primary: require("./assets/fonts/Playfair.ttf"),
-    primaryBold: require("./assets/fonts/PlayfairBold.ttf"),
-    primaryBoldItalic: require("./assets/fonts/PlayfairBoldItalic.ttf"),
-    secondary: require("./assets/fonts/NolluqaRegular.otf"),
+    primary: require("./assets/fonts/Arvo.ttf"),
+    primaryBold: require("./assets/fonts/Arvo-Bold.ttf"),
+    primaryBoldItalic: require("./assets/fonts/Arvo-BoldItalic.ttf"),
+    secondary: require("./assets/fonts/Cinzel-Medium.ttf"),
   });
 
   // Waits to load screen until fonts loaded
@@ -184,8 +183,8 @@ export default function App() {
                 }}
               />
               <Stack.Screen
-                name="ListingDetail"
-                component={ListingDetailScreen}
+                name="ReportDetail"
+                component={ReportDetailScreen}
                 options={{
                   headerBackTitleVisible: false,
                 }}

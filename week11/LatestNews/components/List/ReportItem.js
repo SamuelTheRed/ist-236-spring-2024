@@ -1,15 +1,17 @@
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-function ListingItem(props) {
+// Creates Report Items
+function ReportItem(props) {
+  // Uses react navigation
   const navigation = useNavigation();
-
-    function selectedListingHandler() {
-      navigation.navigate("ListingDetail", {
-        listingId: props.id,
+    // When selected, navigates to destination
+    function selectedReportHandler() {
+      navigation.navigate("ReportDetail", {
+        reportId: props.id,
       });
     }
-
+  // Returns Report Item as Pressable
   return (
     <View
       style={[
@@ -17,27 +19,20 @@ function ListingItem(props) {
         { backgroundColor: props.listIndex % 2 == 0 ? "#ccc" : "#fff" },
       ]}
     >
-      <Pressable onPress={selectedListingHandler}>
+      <Pressable onPress={selectedReportHandler}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={{ uri: props.imageUrl }} />
         </View>
         <View style={styles.infoContainer}>
-          <Text style={styles.price}>${props.price.toLocaleString()}</Text>
-          <Text style={styles.space}>
-            {props.bedrooms} Bed | {props.bathrooms} Bath | {props.squareFeet}{" "}
-            SqFt
-          </Text>
-
-          <Text style={styles.address}>
-            {props.address}, {props.city} {props.state} {props.zipCode}
-          </Text>
+          <Text style={styles.headline}>{props.headline.toLocaleString()}</Text>
+          <Text style={styles.date}>{props.date}</Text>
         </View>
       </Pressable>
     </View>
   );
 }
 
-export default ListingItem;
+export default ReportItem;
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -61,20 +56,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center"
   },
-  price: {
+  headline: {
     fontSize: 35,
     fontFamily: "primaryBold",
     paddingBottom: 5
   },
-  space: {
+  date: {
     fontSize: 25,
-    fontFamily: "primary",
-    paddingBottom: 5
-  },
-  address: {
-    textAlign: "center",
-    width: "100%",
-    fontSize: 15,
     fontFamily: "primary",
     paddingBottom: 5
   }

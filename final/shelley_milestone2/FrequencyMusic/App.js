@@ -5,20 +5,13 @@ import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import BookmarksScreen from "./screens/BookmarksScreen";
-import WorldNewsReportsScreen from "./screens/WorldNewsReportsScreen";
-import USNewsReportsScreen from "./screens/USNewsReportsScreen";
-import ReportDetailScreen from "./screens/ReportDetailScreen";
-import MusicNewsReportsScreen from "./screens/MusicNewsReportsScreen";
+import LessonsScreen from "./screens/LessonsScreen";
+import HomeScreen from "./screens/HomeScreen";
+import StoreScreen from "./screens/StoreShopScreen";
+import VenueScreen from "./screens/VenueEventsScreen";
 import Colors from "./constants/colors";
-import {
-  FontAwesome5,
-  Fontisto,
-  MaterialCommunityIcons,
-  FontAwesome,
-} from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useCallback } from "react";
-import BookmarksContextProvider from "./store/context/bookmarks-context";
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -46,42 +39,58 @@ function TabsNavigator() {
       {/* Tabs Screens */}
       <Tabs.Screen
         // US News
-        name="USNewsReports"
-        component={USNewsReportsScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="flag-usa" size={size} color={color} />
-          ),
-          tabBarLabel: "US News",
-        }}
-      />
-      <Tabs.Screen
-        // World News
-        name="WorldNewsReports"
-        component={WorldNewsReportsScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <Fontisto name="world" size={size} color={color} />
-          ),
-          tabBarLabel: "World News",
-        }}
-      />
-      <Tabs.Screen
-        // Music News
-        name="MusicNewsReports"
-        component={MusicNewsReportsScreen}
+        name="Home"
+        component={HomeScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
-              name="book-music"
+              name="home-heart"
               size={size}
               color={color}
             />
           ),
-          tabBarLabel: "Music News",
+          tabBarLabel: "Home",
+        }}
+      />
+      <Tabs.Screen
+        // World News
+        name="Lessons"
+        component={LessonsScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="school" size={size} color={color} />
+          ),
+          tabBarLabel: "Lessons",
+        }}
+      />
+      <Tabs.Screen
+        // Music News
+        name="StoreShop"
+        component={StoreScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="store" size={size} color={color} />
+          ),
+          tabBarLabel: "Shop",
+        }}
+      />
+      <Tabs.Screen
+        // Music News
+        name="Venue"
+        component={VenueScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="outdoor-lamp"
+              size={size}
+              color={color}
+            />
+          ),
+          tabBarLabel: "Venue",
         }}
       />
     </Tabs.Navigator>
@@ -112,26 +121,26 @@ export default function App() {
     return (
       <>
         <StatusBar style="light" />
-        <BookmarksContextProvider>
-          <NavigationContainer style={styles.rootContainer}>
-            <Stack.Navigator
-              initialRouteName="DrawerScreen"
-              screenOptions={{
-                headerTintColor: Colors.primary300,
-                headerStyle: { backgroundColor: Colors.primary500 },
-                contentStyle: { backgroundColor: "black" },
+        <NavigationContainer style={styles.rootContainer}>
+          <Stack.Navigator
+            initialRouteName="HomeScreen"
+            screenOptions={{
+              headerTintColor: Colors.primary300,
+              headerStyle: { backgroundColor: Colors.primary500 },
+              contentStyle: { backgroundColor: "black" },
+            }}
+          >
+            {/* Screens within Drawer */}
+            <Stack.Screen
+              name="FrequencyMusic"
+              component={TabsNavigator}
+              // Reports options
+              options={{
+                title: "Frequency Music",
               }}
-            >
-              <Stack.Screen
-                name="ReportDetail"
-                component={ReportDetailScreen}
-                options={{
-                  headerBackTitleVisible: false,
-                }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </BookmarksContextProvider>
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
       </>
     );
   }

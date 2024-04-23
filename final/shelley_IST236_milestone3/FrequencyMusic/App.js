@@ -54,18 +54,6 @@ function TabsNavigator() {
         }}
       />
       <Tabs.Screen
-        // World News
-        name="Lessons"
-        component={LessonsScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="school" size={size} color={color} />
-          ),
-          tabBarLabel: "Lessons",
-        }}
-      />
-      <Tabs.Screen
         // Music News
         name="StoreShop"
         component={StoreScreen}
@@ -75,6 +63,18 @@ function TabsNavigator() {
             <MaterialCommunityIcons name="store" size={size} color={color} />
           ),
           tabBarLabel: "Shop",
+        }}
+      />
+      <Tabs.Screen
+        // World News
+        name="Lessons"
+        component={LessonsScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="school" size={size} color={color} />
+          ),
+          tabBarLabel: "Lessons",
         }}
       />
       <Tabs.Screen

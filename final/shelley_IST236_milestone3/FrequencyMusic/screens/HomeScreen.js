@@ -1,44 +1,45 @@
 import { View, StyleSheet, Text, Linking, Image } from "react-native";
 import Title from "../components/Title";
+import Colors from "../constants/colors";
 
 // Home Screen
 function HomeScreen() {
   return (
-    <View>
+    <View style={styles.rootContainer}>
       <View style={styles.titleContainer}>
-        <Title>Rock & Roll &</Title>
-        <Title>Surf & Turf</Title>
+        <Title>Frequency Music</Title>
+        <Text style={styles.infoText}>Store ~ Lessons ~ Venue</Text>
       </View>
 
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
-          source={require("../assets/images/restaurant.png")}
+          source={require("../assets/images/pexels-photo-1613472.jpeg")}
         />
       </View>
 
       <View style={styles.infoContainer}>
         <Text
           style={styles.infoText}
-          onPress={() => Linking.openURL("tel:8435550888")}
+          onPress={() => Linking.openURL("tel:8433250888")}
         >
-          843-555-0888
+          843-325-0888
         </Text>
 
         <Text
           style={styles.infoText}
           onPress={() =>
-            Linking.openURL("https://maps.app.goo.gl/8wJvUnJPrntEBB8f9")
+            Linking.openURL("https://maps.app.goo.gl/csnGeT83gWJnFmwX7")
           }
         >
-          33 Humvee Wv{"\n"}Myrtle Beach{"\n"}SC
+          2058 Middle St,{"\n"} Sullivan's Island, {"\n"}SC 29482
         </Text>
 
         <Text
           style={styles.infoText}
           onPress={() => Linking.openURL("https://osbeorn.net/home/")}
         >
-          www.rockrollsurfturf.com
+          www.frequencymusic.com
         </Text>
       </View>
     </View>
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 2,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   imageContainer: {
     flex: 4,
@@ -64,18 +65,18 @@ const styles = StyleSheet.create({
     height: "100%",
     width: 380,
   },
-  infoContainer:{
-    flex:3,
-    justifyContent:'center',
+  infoContainer: {
+    flex: 3,
+    justifyContent: "center",
   },
-  infoText:{
-    fontSize:30,
-    textAlign:'center',
-    padding:7,
-    color:Colors.primary500,
-    fontFamily:"Wonderbar",
+  infoText: {
+    fontSize: 30,
+    textAlign: "center",
+    padding: 7,
+    color: Colors.primary500,
+    fontFamily: "primary",
   },
-  buttonContainer:{
-    flex:1,
-  }
+  buttonContainer: {
+    flex: 1,
+  },
 });

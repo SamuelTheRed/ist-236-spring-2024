@@ -1,42 +1,63 @@
-import { Modal, View, Button, Image, StyleSheet, Text } from "react-native";
-import Campground from "../models/campgrounds";
+import { View, StyleSheet, Text, Image, Modal } from "react-native";
+import Title from "../components/Title";
+import NavButton from "../components/NavButton";
+import Colors from "../constants/colors";
 
-function ImageViewModal(props) {
-  let description = new Campground(props.id, props.stateId, props.name,  props.numSites, props.foundedYear,  props.rating)
+// Add Note screen object with properties
+function LessonModal(props) {
 
   return (
-    <View style={styles.container}>
-      <Modal
-        visible={props.isVisible}
-        animationType="slide"
-        transparent={false}
-      >
-        <View style={styles.modalContainer}>
-          <Image style={styles.image} source={{ uri: props.imageUrl }} />
-          <Button title="Return to Campgrounds" onPress={props.onClose} />
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.screenContainer}>
+        <View style={styles.titleContainer}>
+          <Title style={styles.title}>{props.title}</Title>
         </View>
-      </Modal>
-    </View>
+
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>{props.text}</Text>
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <NavButton onPress={props.onClose}>Close</NavButton>
+        </View>
+      </View>
+    </Modal>
   );
 }
 
-export default ImageViewModal;
+export default LessonModal;
 
 const styles = StyleSheet.create({
-  container: {
+  screenContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#8B4513",
-  },
-  image: {
     width: "100%",
-    height: "80%",
-    resizeMode: "contain",
+    backgroundColor: Colors.accent800,
+    alignItems: "center",
+  },
+  titleContainer: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  title: {
+    fontSize: 30,
+    textAlign: "center",
+    fontFamily: "primary",
+    color: Colors.primary300,
+  },
+  textContainer: {
+    flex: 5,
+    width: "90%",
+    borderWidth: 3,
+    borderColor: Colors.primary500,
+    padding: 10,
+  },
+  text: {
+    color: Colors.primary300,
+    fontSize: 20,
+    fontFamily: "primary",
+  },
+  buttonContainer: {
+    marginTop: 10,
+    flex: 1,
   },
 });

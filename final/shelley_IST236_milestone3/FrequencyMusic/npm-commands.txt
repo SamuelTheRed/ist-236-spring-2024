@@ -6,5 +6,8 @@ npx expo install react-native-gesture-handler react-native-reanimated
 npm install @react-navigation/bottom-tabs
 npm install expo-font
 npm install expo-splash-screen
+npm install --save react-native-wheely
+npm install @react-native-community/datetimepicker --save
+npx expo install expo-screen-orientation
 npx expo install --fix
 npx expo install expo-linear-gradient

@@ -58,5 +58,12 @@ export const ITEMS = [
     "44.99",
     "https://images.pexels.com/photos/6860817/pexels-photo-6860817.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   ), //
-  new Item("i8", "Rombo Picks", "Guitar Peripheral", "#5c200e", "19.99", "https://images.pexels.com/photos/3742467/pexels-photo-3742467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"), //
+  new Item(
+    "i8",
+    "Rombo Picks",
+    "Guitar Peripheral",
+    "#5c200e",
+    "19.99",
+    "https://images.pexels.com/photos/3742467/pexels-photo-3742467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  ), //
 ];

@@ -9,6 +9,7 @@ import {
   Modal,
   Platform,
   Dimensions,
+  Alert,
 } from "react-native";
 import Colors from "../constants/colors";
 import Title from "../components/Title";
@@ -70,13 +71,16 @@ function LessonsScreen() {
   }
 
   function onReserveHandler() {
-    let title = `Your Lesson\n`;
-    let res = `Check In:\t\t${checkIn.toDateString()}\n`;
-    res = res + `Time:\t\t3pm-${4+numHours}pm\n`;
-    res = res + `Number of Students:\t\t${guestCounts[numStudents]}\n`;
-    res = res + `Hours:\t\t${campsiteCounts[numHours]}\n`;
+    let title = `Your Lesson Reciept\n`;
+    let res = `Check In: ${checkIn.toDateString()}\n`;
+    res = res + `Time: 3pm-${4+numHours}pm\n`;
+    res = res + `Number of Students: ${guestCounts[numStudents]}\n`;
+    res = res + `Hours: ${campsiteCounts[numHours]}\n`;
+    let price = 25 * (1 + numHours);
+    price = "On Dropoff: $" + price;
     setModalNoteTitle(title);
-    setModalNoteText(res);
+    setModalNoteText(res + price);
+    Alert.alert(title, res + price);
     setModalIsVisible(true);
   }
 

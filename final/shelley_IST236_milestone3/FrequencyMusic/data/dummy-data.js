@@ -1,4 +1,5 @@
 import Item from "../models/items";
+import VenueEvent from "../models/venueevents";
 
 // Data List for Items
 export const ITEMS = [
@@ -62,8 +63,54 @@ export const ITEMS = [
     "i8",
     "Rombo Picks",
     "Guitar Peripheral",
-    "#5c200e",
+    "#874b39",
     "19.99",
     "https://images.pexels.com/photos/3742467/pexels-photo-3742467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  ), //
+];
+
+// Data List for VenueEvents
+export const EVENTS = [
+  new VenueEvent(
+    "e1",
+    "Kytes Listening Party",
+    "04/04/2024",
+    "All Five members of Folk Band 'Kytes' invites you to a listening party of their fourth studio album",
+    require("../assets/images/event1.jpeg")
+  ), //
+  new VenueEvent(
+    "e2",
+    "Dedicated to Algorithms",
+    "04/11/2024",
+    "Several Locals bands participate in 'open-mic' style battle of the bands based on tik tok likes",
+    require("../assets/images/event2.jpeg")
+  ), //
+  new VenueEvent(
+    "e3",
+    "Jack Solomon is the Desert Man",
+    "04/18/2024",
+    "As the first chapter of the next few weeks, Jack Solomon joins us to preform his greatest hits in the last few years",
+    require("../assets/images/event3.jpeg")
+  ), //
+  new VenueEvent(
+    "e4",
+    "Desert Man vs. Beach Man",
+    "04/25/2024",
+    "Beach Man claims he is the greatest alive and challenges Beach Man 'Jack Solomon' for his throne of the Millennia Pavilion",
+    require("../assets/images/event4.jpeg")
+  ), //
+  new VenueEvent(
+    "e5",
+    "Beach Man's Celebration",
+    "05/01/2024",
+    "Beach Man's planned celebration after what he presumes will be his celebration of victory over Jack Solomon",
+    require("../assets/images/event5.jpeg")
+  ), //
+  new VenueEvent(
+    "e6",
+    "Par Four Jazz Bash",
+    "05/08/2024",
+    "TCTG local jazz band takes center stage, open bar, open pizza bar, and more",
+    require("../assets/images/event6.jpeg")
   ), //
 ];

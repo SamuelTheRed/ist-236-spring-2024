@@ -17,7 +17,6 @@ import NavButton from "../components/NavButton";
 import WheelPicker from "react-native-wheely";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
-import LessonModal from "../modals/LessonModal";
 
 //  Screen
 function LessonsScreen() {
@@ -76,33 +75,17 @@ function LessonsScreen() {
     res = res + `Time: 3pm-${4+numHours}pm\n`;
     res = res + `Number of Students: ${guestCounts[numStudents]}\n`;
     res = res + `Hours: ${campsiteCounts[numHours]}\n`;
-    let price = 25 * (1 + numHours);
+    let price = (25 * (1 + numHours)) + (15 * (1 + numStudents));
     price = "On Dropoff: $" + price;
-    setModalNoteTitle(title);
-    setModalNoteText(res + price);
     Alert.alert(title, res + price);
-    setModalIsVisible(true);
-  }
-
-  // Set safe area screen boundaries
-  const [modalIsVisible, setModalIsVisible] = useState(false);
-  const [modalNoteTitle, setModalNoteTitle] = useState("");
-  const [modalNoteText, setModalNoteText] = useState("");
-
-  function noteViewHandler(title, text) {
-    setModalNoteTitle(title);
-    setModalNoteText(text);
-    setModalIsVisible(true);
-  }
-  function closeNoteViewHandler() {
-    setModalIsVisible(false);
   }
 
   /*---- Dynanic Window Control ----*/
   const { width, height } = useWindowDimensions();
 
   const dateLabelFlex = {
-    fontSize: width * 0.1,
+    fontSize: width * 0.08,
+    padding: 5
   };
   const dateTextFlex = {
     fontSize: width * 0.05,
@@ -123,7 +106,7 @@ function LessonsScreen() {
         <View style={styles.rowContainer}>
           <View style={styles.dateContainer}>
             {/* Date Check In Label and Pressable */}
-            <Text style={[styles.dateLabel, dateLabelFlex]}>Lesson Date:</Text>
+            <Text style={[styles.dateLabel, dateLabelFlex]}>{`Lesson Date:`}</Text>
             <Text style={styles.dateInfo}>
               Lessons are on the specified date from 3-7pm
             </Text>
@@ -177,7 +160,7 @@ function LessonsScreen() {
         <View style={styles.rowContainer}>
           {/* Title and Number Variable */}
           <Text style={[styles.dateLabel, dateLabelFlex]}>
-            Number of Students:
+            {`Number of Students:`}
           </Text>
           <Pressable onPress={showNumStudentsPicker}>
             <View style={styles.dateContainer}>
@@ -248,13 +231,6 @@ function LessonsScreen() {
               </View>
             </View>
           </Modal>
-
-          <LessonModal
-            visible={modalIsVisible}
-            title={modalNoteTitle}
-            text={modalNoteText}
-            onClose={closeNoteViewHandler}
-          />
         </View>
 
         {/* Navigates to destination*/}
@@ -305,12 +281,13 @@ const styles = StyleSheet.create({
   },
   dateContainer: {
     backgroundColor: Colors.primary300o5,
-    padding: 10,
+    padding: 20,
   },
   dateLabel: {
     backgroundColor: Colors.primary500,
     fontFamily: "primary",
     fontSize: 100,
+    color: Colors.primary300,
     textShadowColor: "#000",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 2,
@@ -318,6 +295,7 @@ const styles = StyleSheet.create({
   dateInfo: {
     fontFamily: "primary",
     fontSize: 10,
+    padding: 20
   },
   dateText: {
     color: Colors.primary800,

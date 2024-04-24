@@ -1,10 +1,5 @@
 import { LinearGradient } from "expo-linear-gradient";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-} from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import Colors from "../constants/colors";
 
 // Country Grid Tile
@@ -15,10 +10,7 @@ function ItemGridTile(props) {
       {/* Linear Gradient Design */}
       <LinearGradient
         style={styles.innerContainer}
-        colors={[
-          props.color,
-          Colors.accent300o75,
-        ]}
+        colors={[props.color, props.color, props.color, Colors.primary300]}
       >
         {/* Name of Country */}
         <Text style={styles.name}>{props.name}</Text>

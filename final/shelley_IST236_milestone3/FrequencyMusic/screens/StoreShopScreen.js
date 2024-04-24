@@ -6,19 +6,14 @@ import Colors from "../constants/colors";
 // Home Navigation Screen
 function StoreScreen(props) {
   function renderItem(itemData) {
-    // Navigates to country overview screen
-    // function pressHandler() {
-    //   props.navigation.navigate("DestinationsOverviewScreen", {
-    //     countryId: itemData.item.id,
-    //   });
-    // }
-
     // Country Tile for Grid View
     return (
       <ItemGridTile
         name={itemData.item.name}
+        type={itemData.item.type}
         color={itemData.item.color}
-        // onPress={pressHandler}
+        price={itemData.item.price}
+        image={itemData.item.image}
       />
     );
   }

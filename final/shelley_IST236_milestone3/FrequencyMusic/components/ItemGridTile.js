@@ -1,35 +1,31 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { Pressable, View, Text, StyleSheet, Platform } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+} from "react-native";
 import Colors from "../constants/colors";
 
 // Country Grid Tile
 function ItemGridTile(props) {
   return (
-    // Grid Item 
+    // Grid Item
     <View style={styles.gridItem}>
-      <Pressable
-        style={({ pressed }) => [
-          styles.button,
-          pressed ? styles.buttonPressed : null,
+      {/* Linear Gradient Design */}
+      <LinearGradient
+        style={styles.innerContainer}
+        colors={[
+          props.color,
+          Colors.accent300o75,
         ]}
-        android_ripple={{ color: Colors.primary300 }}
-        onPress={props.onPress}
       >
-        {/* Linear Gradient Design */}
-        <LinearGradient
-          style={styles.innerContainer}
-          colors={[
-            props.color,
-            props.color,
-            props.color,
-            props.color,
-            Colors.accent300o75,
-          ]}
-        >
-          {/* Name of Country */}
-          <Text style={styles.name}>{props.name}</Text>
-        </LinearGradient>
-      </Pressable>
+        {/* Name of Country */}
+        <Text style={styles.name}>{props.name}</Text>
+        <Image style={styles.image} source={{ uri: props.image }} />
+        <Text style={styles.type}>{props.type}</Text>
+        <Text style={styles.price}>${props.price}</Text>
+      </LinearGradient>
     </View>
   );
 }
@@ -46,10 +42,9 @@ const styles = StyleSheet.create({
     elevation: 4,
     backgroundColor: "#FFF",
     shadowColor: "#000",
-    shadowOpacity: 0.50,
+    shadowOpacity: 0.5,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 20,
-    overflow: Platform.OS === "android" ? "hidden" : "visible",
   },
   button: {
     flex: 1,
@@ -63,8 +58,26 @@ const styles = StyleSheet.create({
   },
   name: {
     textAlign: "center",
-    fontSize: 30,
+    fontSize: 20,
     fontFamily: "primary",
     color: "#000",
+  },
+  type: {
+    textAlign: "center",
+    fontSize: 15,
+    fontFamily: "primary",
+    color: "#000",
+  },
+  price: {
+    textAlign: "center",
+    fontSize: 10,
+    fontFamily: "primary",
+    color: "#000",
+  },
+  image: {
+    width: "100%",
+    height: "80%",
+    resizeMode: "contain",
+    borderRadius: 15,
   },
 });

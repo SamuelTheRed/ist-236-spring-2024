@@ -9,11 +9,13 @@ function EventModal(props) {
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.screenContainer}>
+        {/* Modal Title */}
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{props.name}</Text>
         </View>
-
+        {/* Modal Text Container */}
         <View style={styles.textContainer}>
+          {/* Image, Date, and Description */}
           <Image style={styles.image} source={props.image} />
           <Text style={styles.text}>{props.date}</Text>
           <Text style={styles.description}>{props.description}</Text>

@@ -10,6 +10,7 @@ function NavButton(props) {
             onPress={props.onPress}
             style={({ pressed }) => pressed && styles.pressedItem}
         >
+            {/* NavButton Container */}
             <View style={styles.buttonContainer}>
                 <View style={styles.textContainer}>
                     {/* Pulls from properties to place button info */}

@@ -126,7 +126,7 @@ export default function App() {
             initialRouteName="HomeScreen"
             screenOptions={{
               headerTintColor: Colors.primary300,
-              headerStyle: { backgroundColor: Colors.primary500 },
+              headerStyle: { backgroundColor: Colors.primary500},
               contentStyle: { backgroundColor: "black" },
             }}
           >
@@ -137,6 +137,7 @@ export default function App() {
               // Reports options
               options={{
                 title: "Frequency Music",
+                headerTitleStyle: {fontSize: 30, fontFamily: "secondary"}
               }}
             />
           </Stack.Navigator>

@@ -36,9 +36,10 @@ function VenueScreen() {
     >
       {/* Custom title component */}
       <View style={styles.titleContainer}>
-        <Title>Frequency Music School</Title>
+        <Title>Millenia Pavilion</Title>
       </View>
       <View style={styles.listContainer}>
+        {/* Flatlist for Events on Screen */}
         <FlatList
           data={EVENTS}
           keyExtractor={(items) => items.id}
@@ -63,6 +64,7 @@ function VenueScreen() {
           }}
         />
       </View>
+      {/* Popus event modal */}
       <EventModal
         visible={modalIsVisible}
         name={modalEventTitle}

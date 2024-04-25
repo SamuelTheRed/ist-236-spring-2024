@@ -23,7 +23,7 @@ function StoreScreen(props) {
     <View>
       {/* Custom title component */}
       <View style={styles.titleContainer}>
-        <Title>Frequency Music Store</Title>
+        <Title>Frequent Flyer Store</Title>
       </View>
       {/* List of Countries in Columns */}
       <FlatList

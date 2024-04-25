@@ -1,6 +1,6 @@
 import {Text, StyleSheet} from "react-native"
 import Colors from "../constants/colors"
-
+// Title component returned styled
 function Title(props){
     return <Text style = {styles.title}>{props.children}</Text>
 }

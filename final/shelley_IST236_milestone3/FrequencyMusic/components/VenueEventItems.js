@@ -5,13 +5,17 @@ import Colors from "../constants/colors";
 function VenueEventItem(props) {
   return (
     <View style={styles.itemContainer}>
+      {/* Pressable component of Item */}
       <Pressable onPress={props.onView}>
+        {/* Event Title/Name */}
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{props.name}</Text>
         </View>
+        {/* Event Image */}
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={props.image} />
         </View>
+        {/* Event Date */}
         <View style={styles.dateContainer}>
           <Text style={styles.date}>{props.date}</Text>
         </View>

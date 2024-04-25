@@ -68,14 +68,16 @@ function LessonsScreen() {
   function onChangeNumHours(index) {
     setNumHours(index);
   }
-
+  // Handler for Setting Reservation
   function onReserveHandler() {
     let title = `Your Lesson Reciept\n`;
     let res = `Check In: ${checkIn.toDateString()}\n`;
-    res = res + `Time: 3pm-${4+numHours}pm\n`;
+    // Continue to build Reservation text
+    res = res + `Time: 3pm-${4 + numHours}pm\n`;
     res = res + `Number of Students: ${guestCounts[numStudents]}\n`;
     res = res + `Hours: ${campsiteCounts[numHours]}\n`;
-    let price = (25 * (1 + numHours)) + (15 * (1 + numStudents));
+    // Calculate Price for lesson
+    let price = 25 * (1 + numHours) + 15 * (1 + numStudents);
     price = "On Dropoff: $" + price;
     Alert.alert(title, res + price);
   }
@@ -85,7 +87,7 @@ function LessonsScreen() {
 
   const dateLabelFlex = {
     fontSize: width * 0.08,
-    padding: 5
+    padding: 5,
   };
   const dateTextFlex = {
     fontSize: width * 0.05,
@@ -99,14 +101,16 @@ function LessonsScreen() {
       <ScrollView style={styles.scrollContainer}>
         {/* Custom title component */}
         <View style={styles.titleContainer}>
-          <Title>Frequency Music School</Title>
+          <Title>Frequency Art School</Title>
         </View>
 
         {/* Date Check In and Check Out Area */}
         <View style={styles.rowContainer}>
           <View style={styles.dateContainer}>
             {/* Date Check In Label and Pressable */}
-            <Text style={[styles.dateLabel, dateLabelFlex]}>{`Lesson Date:`}</Text>
+            <Text
+              style={[styles.dateLabel, dateLabelFlex]}
+            >{`Lesson Date:`}</Text>
             <Text style={styles.dateInfo}>
               Lessons are on the specified date from 3-7pm
             </Text>
@@ -197,9 +201,7 @@ function LessonsScreen() {
 
         {/* Hours number Picker (android) or Modal and Picker (apple) */}
         <View style={styles.rowContainer}>
-          <Text style={[styles.dateLabel, dateLabelFlex]}>
-            Lesson Hours:
-          </Text>
+          <Text style={[styles.dateLabel, dateLabelFlex]}>Lesson Hours:</Text>
           <Pressable onPress={showNumHoursPicker}>
             <View style={styles.dateContainer}>
               <Text style={[styles.dateText, dateTextFlex]}>
@@ -295,7 +297,7 @@ const styles = StyleSheet.create({
   dateInfo: {
     fontFamily: "primary",
     fontSize: 10,
-    padding: 20
+    padding: 20,
   },
   dateText: {
     color: Colors.primary800,

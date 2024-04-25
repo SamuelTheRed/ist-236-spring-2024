@@ -6,18 +6,19 @@ import Colors from "../constants/colors";
 function HomeScreen() {
   return (
     <View style={styles.rootContainer}>
+      {/* Title Container for home */}
       <View style={styles.titleContainer}>
         <Title>Frequency Music</Title>
         <Text style={styles.infoText}>Store ~ Lessons ~ Venue</Text>
       </View>
-
+      {/* Image for home */}
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
           source={require("../assets/images/pexels-photo-1613472.jpeg")}
         />
       </View>
-
+      {/* Info for phone */}
       <View style={styles.infoContainer}>
         <Text
           style={styles.infoText}
@@ -25,7 +26,7 @@ function HomeScreen() {
         >
           843-325-0888
         </Text>
-
+        {/* Info for location */}
         <Text
           style={styles.infoText}
           onPress={() =>
@@ -34,7 +35,7 @@ function HomeScreen() {
         >
           2058 Middle St,{"\n"} Sullivan's Island, {"\n"}SC 29482
         </Text>
-
+        {/* Info for website */}
         <Text
           style={styles.infoText}
           onPress={() => Linking.openURL("https://osbeorn.net/home/")}
